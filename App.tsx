@@ -9,14 +9,17 @@
  */
 
 import React from 'react';
-import {SafeAreaView, StatusBar, Text} from 'react-native';
-
+import {SafeAreaView, StatusBar} from 'react-native';
+import {NativeBaseProvider, Text} from 'native-base';
 const App = () => {
   return (
-    <SafeAreaView>
-      <StatusBar barStyle={'dark-content'} />
-      <Text>hei</Text>
-    </SafeAreaView>
+    <NativeBaseProvider>
+      {/* <SafeAreaView>
+        <StatusBar barStyle={'dark-content'} />
+        <Text>hei</Text>
+      </SafeAreaView> */}
+      <Text>demna</Text>
+    </NativeBaseProvider>
   );
 };
 
