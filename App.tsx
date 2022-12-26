@@ -14,6 +14,7 @@ import {NativeBaseProvider, Text} from 'native-base';
 const App = () => {
   return (
     <NativeBaseProvider>
+      {/* look at lesson 23 for custom fonts */}
       {/* <SafeAreaView>
         <StatusBar barStyle={'dark-content'} />
         <Text>hei</Text>
