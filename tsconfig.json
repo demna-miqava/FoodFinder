@@ -2,6 +2,18 @@
 {
   "extends": "@tsconfig/react-native/tsconfig.json",     /* Recommended React Native TSConfig base */
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths" : {
+      "@app/*": ["src/*"],
+      "@api/*": ["./src/api/*"],
+      "@images/*": ["./src/assets/images/*"],
+      "@icons/*": ["./src/assets/icons/*"],
+      "@components/*": ["./src/components/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@redux/*": ["./src/redux/*"],
+      "@theme/*": ["./src/theme/*"],
+      "@screens/*": ["./src/screens/*"]
+    },
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
     /* Completeness */
