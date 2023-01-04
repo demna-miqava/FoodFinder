@@ -7,12 +7,13 @@
       "@app/*": ["src/*"],
       "@api/*": ["./src/api/*"],
       "@images/*": ["./src/assets/images/*"],
-      "@icons/*": ["./src/assets/icons/*"],
+      "@icons*": ["./src/assets/icons/*"],
       "@components/*": ["./src/components/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@redux/*": ["./src/redux/*"],
       "@theme/*": ["./src/theme/*"],
-      "@screens/*": ["./src/screens/*"]
+      "@screens/*": ["./src/screens/*"],
+      "@type*": ["./src/types/*"]
     },
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
