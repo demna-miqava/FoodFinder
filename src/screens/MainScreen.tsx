@@ -1,10 +1,11 @@
-import {Text} from 'native-base';
+import {Text, useTheme} from 'native-base';
 import React from 'react';
 
 type Props = {};
 
 const MainScreen = (props: Props) => {
-  return <Text>Food Finder</Text>;
+  const theme = useTheme();
+  return <Text fontFamily={theme.fontConfig.kalamRegular}>Food Finder</Text>;
 };
 
 export default MainScreen;
