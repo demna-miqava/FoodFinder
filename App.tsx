@@ -11,7 +11,13 @@
 import React from 'react';
 import {SafeAreaView, StatusBar} from 'react-native';
 import {NativeBaseProvider, Text} from 'native-base';
+import RNBootSplash from 'react-native-bootsplash';
 const App = () => {
+  React.useEffect(() => {
+    setTimeout(() => {
+      RNBootSplash.hide();
+    }, 1000);
+  }, []);
   return (
     <NativeBaseProvider>
       {/* look at lesson 23 for custom fonts */}
