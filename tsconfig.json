@@ -13,7 +13,8 @@
       "@redux/*": ["./src/redux/*"],
       "@theme/*": ["./src/theme/*"],
       "@screens/*": ["./src/screens/*"],
-      "@type*": ["./src/types/*"]
+      "@type*": ["./src/types/*"],
+      "@features/*": ["./src/features/*"]
     },
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
