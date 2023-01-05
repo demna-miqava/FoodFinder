@@ -1,11 +1,11 @@
 import {HStack, useTheme, View} from 'native-base';
 import React from 'react';
 import {OpenNowIcon, StarIcon} from '@icons/';
-import {Image} from '@components/Image/';
+import {Image} from '@components/Image';
 import {Text} from '@components/Typography';
 import {RestaurantCardType} from '@type/';
 
-const RestaurantsInfoCard = ({
+export const RestaurantsInfoCard = ({
   restaurant,
 }: {
   restaurant: RestaurantCardType;
@@ -64,7 +64,6 @@ const stylesBuilder = theme => ({
     borderRadius: theme.space[2],
     backgroundColor: theme.colors.bg.primary,
     padding: theme.space[3],
-    fontFamily: theme.fontConfig.heading,
     marginBottom: theme.space[3],
   },
   infoContainer: {
@@ -79,5 +78,3 @@ const stylesBuilder = theme => ({
     height: 15,
   },
 });
-
-export default RestaurantsInfoCard;
