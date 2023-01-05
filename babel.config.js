@@ -17,6 +17,7 @@ module.exports = {
           '@screens': './src/screens',
           '@type': './src/types',
           '@features': './src/features',
+          '@containers': './src/containers',
         },
       },
     ],

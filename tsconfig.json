@@ -14,7 +14,8 @@
       "@theme/*": ["./src/theme/*"],
       "@screens/*": ["./src/screens/*"],
       "@type*": ["./src/types/*"],
-      "@features/*": ["./src/features/*"]
+      "@features/*": ["./src/features/*"],
+      "@containers/*":["./src/containers/*"]
     },
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
