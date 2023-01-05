@@ -5,7 +5,6 @@ import {RestaurantsInfoCard} from '../components/RestaurantInfoCard';
 import {CardSkeleton} from '@components/Skeleton';
 import {MakeRequestWrapper} from '@app/containers';
 import {RestaurantCardType} from '@app/types';
-import {ThemeType} from '@app/theme';
 
 const restaurant = {
   name: 'Some restaurant',
@@ -78,7 +77,7 @@ const ResutaurantsScreen = () => {
 
 export default ResutaurantsScreen;
 
-const stylesBuilder = (theme: ThemeType) => ({
+const stylesBuilder = theme => ({
   searchContainer: {
     padding: theme.space[3],
   },
