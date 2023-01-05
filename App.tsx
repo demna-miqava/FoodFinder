@@ -4,6 +4,7 @@ import RNBootSplash from 'react-native-bootsplash';
 import MainScreen from '@screens/MainScreen';
 import {theme} from '@app/theme';
 import {SafeAreaView} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 const App = () => {
   React.useEffect(() => {
     setTimeout(() => {
@@ -11,15 +12,17 @@ const App = () => {
     }, 1000);
   }, []);
   return (
-    <NativeBaseProvider theme={theme}>
-      <SafeAreaView
-        style={{
-          flex: 1,
-          backgroundColor: 'teal',
-        }}>
-        <MainScreen />
-      </SafeAreaView>
-    </NativeBaseProvider>
+    <NavigationContainer>
+      <NativeBaseProvider theme={theme}>
+        <SafeAreaView
+          style={{
+            flex: 1,
+            backgroundColor: 'teal',
+          }}>
+          <MainScreen />
+        </SafeAreaView>
+      </NativeBaseProvider>
+    </NavigationContainer>
   );
 };
 
