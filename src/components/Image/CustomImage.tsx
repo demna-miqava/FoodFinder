@@ -11,7 +11,7 @@ interface CustomImageProps {
 export const Image = ({source, style, resizeMode}: CustomImageProps) => {
   return (source as any).uri ? (
     <FastImage
-      style={{...(style as any)}}
+      style={style}
       source={{
         uri: source.uri,
         priority: FastImage.priority.normal,
