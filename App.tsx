@@ -1,10 +1,10 @@
 import React from 'react';
 import {NativeBaseProvider} from 'native-base';
 import RNBootSplash from 'react-native-bootsplash';
-import MainScreen from '@screens/MainScreen';
 import {theme} from '@app/theme';
 import {SafeAreaView} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
+import ResutaurantsScreen from '@features/restaurants/screens/RestaurantsScreen';
 const App = () => {
   React.useEffect(() => {
     setTimeout(() => {
@@ -19,7 +19,7 @@ const App = () => {
             flex: 1,
             backgroundColor: 'teal',
           }}>
-          <MainScreen />
+          <ResutaurantsScreen />
         </SafeAreaView>
       </NativeBaseProvider>
     </NavigationContainer>
