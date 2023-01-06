@@ -6,6 +6,9 @@ import {ToastIds} from '@constants/';
 
 const noWifi = ToastIds.NoWifi;
 
+const title = 'Oops, you have no internet access';
+const message = 'Please turn wifi on to see restaurants nearby';
+
 export const useNoWifiToast = () => {
   const toast = useToast();
   const {isConnected} = useNetInfo();
@@ -21,7 +24,7 @@ export const useNoWifiToast = () => {
           id: noWifi,
           placement: 'top',
           render: () => (
-            <Alert status="warning" title="oops" message="no internet" />
+            <Alert status="error" title={title} message={message} />
           ),
         });
     }

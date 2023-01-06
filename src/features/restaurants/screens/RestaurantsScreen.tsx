@@ -5,6 +5,7 @@ import {RestaurantsInfoCard} from '../components/RestaurantInfoCard';
 import {CardSkeleton} from '@components/Skeleton';
 import {MakeRequestWrapper} from '@app/containers';
 import {RestaurantCardType} from '@app/types';
+import {useNoWifiToast} from '@app/hooks';
 
 const restaurant = {
   name: 'Some restaurant',
@@ -37,7 +38,8 @@ const ResutaurantsScreen = () => {
       setIsLoading(false);
     }, 3000);
   }, []);
-
+  // move this to Route.tsx
+  useNoWifiToast();
   return (
     <>
       <View style={stylesBuilder(theme).searchContainer}>
