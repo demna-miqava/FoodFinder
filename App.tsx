@@ -6,11 +6,18 @@ import {SafeAreaView, StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import ResutaurantsScreen from '@features/restaurants/screens/RestaurantsScreen';
 import './src/assets/localization/';
+import {userStorage} from '@helpers/';
 const App = () => {
   React.useEffect(() => {
     setTimeout(() => {
       RNBootSplash.hide();
     }, 1000);
+  }, []);
+  // move this in Routes.tsx
+  React.useEffect(() => {
+    (async () => {
+      await userStorage.bootstrap();
+    })();
   }, []);
   return (
     <NavigationContainer>
