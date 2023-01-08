@@ -16,7 +16,8 @@
       "@type*": ["./src/types/*"],
       "@constants*":["./src/constants/*"],
       "@features/*": ["./src/features/*"],
-      "@containers/*":["./src/containers/*"]
+      "@containers/*":["./src/containers/*"],
+      "@helpers*": ["./src/helpers/*"]
     },
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 

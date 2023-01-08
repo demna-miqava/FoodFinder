@@ -19,6 +19,7 @@ module.exports = {
           '@constants': './src/constants',
           '@features': './src/features',
           '@containers': './src/containers',
+          '@helpers': './src/helpers',
         },
       },
     ],
