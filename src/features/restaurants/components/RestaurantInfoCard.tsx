@@ -4,6 +4,7 @@ import {OpenNowIcon, StarIcon} from '@icons/';
 import {Image} from '@components/Image';
 import {Text} from '@components/Typography';
 import {RestaurantCardType} from '@type/';
+import {useTranslation} from 'react-i18next';
 
 export const RestaurantsInfoCard = ({
   restaurant,
@@ -21,6 +22,8 @@ export const RestaurantsInfoCard = ({
     isClosedTemporarily,
   } = restaurant;
   const theme = useTheme();
+
+  const {t} = useTranslation();
 
   const ratingArray = Array.from(new Array(Math.ceil(rating)));
   //https://github.com/Monte9/react-native-ratings
@@ -42,7 +45,7 @@ export const RestaurantsInfoCard = ({
           </HStack>
           <HStack alignItems="center" space={1}>
             {!isClosedTemporarily && (
-              <Text color="red.500">CLOSED TEMPORARILY</Text>
+              <Text color="red.500">{t('temporarilyClosed')}</Text>
             )}
             {isOpenNow && <OpenNowIcon />}
             <Image
