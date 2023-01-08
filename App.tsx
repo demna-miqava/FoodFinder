@@ -5,6 +5,7 @@ import {theme} from '@app/theme';
 import {SafeAreaView} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import ResutaurantsScreen from '@features/restaurants/screens/RestaurantsScreen';
+import './src/assets/localization/';
 const App = () => {
   React.useEffect(() => {
     setTimeout(() => {

@@ -6,6 +6,7 @@ import {CardSkeleton} from '@components/Skeleton';
 import {MakeRequestWrapper} from '@app/containers';
 import {RestaurantCardType} from '@app/types';
 import {useNoWifiToast} from '@app/hooks';
+import {useTranslation} from 'react-i18next';
 
 const restaurant = {
   name: 'Some restaurant',
@@ -38,12 +39,13 @@ const ResutaurantsScreen = () => {
       setIsLoading(false);
     }, 3000);
   }, []);
+  const {t} = useTranslation();
   // move this to Route.tsx
   useNoWifiToast();
   return (
     <>
       <View style={stylesBuilder(theme).searchContainer}>
-        <SearchBar label={'Search Restaurants'} />
+        <SearchBar label={t('searchRestaurnats')} />
       </View>
       <View style={stylesBuilder(theme).textContainer}>
         <MakeRequestWrapper
