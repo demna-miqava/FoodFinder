@@ -13,7 +13,6 @@ export const useNoWifiToast = () => {
   const toast = useToast();
   const {isConnected} = useNetInfo();
   const isToastActive = toast.isActive(noWifi);
-  console.log('is con', isConnected, noWifi);
   useEffect(() => {
     if (isConnected) {
       isToastActive && toast.close(noWifi);
