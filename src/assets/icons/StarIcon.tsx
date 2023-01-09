@@ -1,6 +1,6 @@
 import React from 'react';
 import {SvgCss} from 'react-native-svg';
-import {SvgIconProps} from '../../types';
+import {SvgIconProps} from '@type/';
 
 const xml = (props: SvgIconProps) => {
   const {width = 20, height = 20} = props;

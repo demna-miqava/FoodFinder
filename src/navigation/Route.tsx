@@ -5,6 +5,7 @@ import {Text} from '@components/Typography';
 import ResutaurantsScreen from '@features/restaurants/screens/RestaurantsScreen';
 import {useNoWifiToast} from '@hooks/';
 import {userStorage} from '@helpers/';
+import {HomeIcon, MapsIcon, SettingsIcon} from '@icons/';
 
 function MapsScreen() {
   return (
@@ -34,14 +35,29 @@ export const Route = () => {
   }, []);
 
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={({route}) => ({
+        tabBarIcon: () => {
+          if (route.name === 'Restaurants') {
+            return <HomeIcon />;
+          } else if (route.name === 'Settings') {
+            return <SettingsIcon />;
+          } else if (route.name === 'Maps') {
+            return <MapsIcon />;
+          }
+        },
+      })}
+      tabBarOptions={{
+        activeTintColor: 'tomato',
+        inactiveTintColor: 'gray',
+      }}>
       <Tab.Screen
         name="Restaurants"
         component={ResutaurantsScreen}
         options={{headerShown: false}}
       />
       <Tab.Screen
-        name="Setttings"
+        name="Settings"
         component={SettingsScreen}
         options={{headerShown: false}}
       />
