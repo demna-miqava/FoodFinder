@@ -1,4 +1,4 @@
-import {FlatList, useTheme, View} from 'native-base';
+import {FlatList, View} from 'native-base';
 import React, {useState} from 'react';
 import {SearchBar} from '@components/SearchBar';
 import {RestaurantsInfoCard} from '../components/RestaurantInfoCard';
@@ -7,6 +7,7 @@ import {MakeRequestWrapper} from '@app/containers';
 import {RestaurantCardType} from '@app/types';
 import {useNoWifiToast} from '@app/hooks';
 import {useTranslation} from 'react-i18next';
+import {spaces} from '@app/theme';
 
 const restaurant = {
   name: 'Some restaurant',
@@ -33,21 +34,23 @@ const ResutaurantsScreen = () => {
     restaurant,
     restaurant,
   ]);
-  const theme = useTheme();
   React.useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
   }, []);
   const {t} = useTranslation();
-  // move this to Route.tsx
   useNoWifiToast();
   return (
-    <>
-      <View style={stylesBuilder(theme).searchContainer}>
+    <View
+      flex={1}
+      padding={spaces[3]}
+      // check here
+      style={{backgroundColor: 'teal'}}>
+      <View pb={spaces[3]}>
         <SearchBar label={t('searchRestaurnats')} />
       </View>
-      <View style={stylesBuilder(theme).textContainer}>
+      <View>
         <MakeRequestWrapper
           data={data}
           isFetching={isLoading}
@@ -75,19 +78,8 @@ const ResutaurantsScreen = () => {
           }}
         />
       </View>
-    </>
+    </View>
   );
 };
 
 export default ResutaurantsScreen;
-
-const stylesBuilder = theme => ({
-  searchContainer: {
-    padding: theme.space[3],
-  },
-  textContainer: {
-    flex: 1,
-    backgroundColor: 'teal',
-    padding: theme.space[3],
-  },
-});
