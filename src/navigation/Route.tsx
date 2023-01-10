@@ -5,7 +5,7 @@ import {Text} from '@components/Typography';
 import ResutaurantsScreen from '@features/restaurants/screens/RestaurantsScreen';
 import {useNoWifiToast} from '@hooks/';
 import {userStorage} from '@helpers/';
-import {HomeIcon, MapsIcon, SettingsIcon} from '@icons/';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 function MapsScreen() {
   return (
@@ -37,14 +37,17 @@ export const Route = () => {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
-        tabBarIcon: () => {
+        tabBarIcon: ({color, size}) => {
+          let iconName = '';
+
           if (route.name === 'Restaurants') {
-            return <HomeIcon />;
+            iconName = 'md-restaurant';
           } else if (route.name === 'Settings') {
-            return <SettingsIcon />;
+            iconName = 'md-settings';
           } else if (route.name === 'Maps') {
-            return <MapsIcon />;
+            iconName = 'md-map';
           }
+          return <Icon name={iconName} color={color} size={size} />;
         },
       })}
       tabBarOptions={{
