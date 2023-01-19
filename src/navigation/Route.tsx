@@ -4,7 +4,7 @@ import {View} from 'native-base';
 import {Text} from '@components/Typography';
 import ResutaurantsScreen from '@features/restaurants/screens/RestaurantsScreen';
 import {useNoWifiToast} from '@hooks/';
-import {userStorage} from '@helpers/';
+import {isPlatform, userStorage} from '@helpers/';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 function MapsScreen() {
@@ -49,9 +49,13 @@ export const Route = () => {
           }
           return <Icon name={iconName} color={color} size={size} />;
         },
+        tabBarStyle: {
+          height: isPlatform('android') ? 60 : 71,
+          paddingBottom: isPlatform('android') ? 12 : 22,
+        },
       })}
       tabBarOptions={{
-        activeTintColor: 'tomato',
+        activeTintColor: 'teal',
         inactiveTintColor: 'gray',
       }}>
       <Tab.Screen
