@@ -1,13 +1,12 @@
 import {FlatList, View} from 'native-base';
 import React, {useState} from 'react';
-import {SearchBar} from '@components/SearchBar';
 import {RestaurantsInfoCard} from '../components/RestaurantInfoCard';
 import {CardSkeleton} from '@components/Skeleton';
 import {MakeRequestWrapper} from '@app/containers';
 import {RestaurantCardType} from '@app/types';
-import {useTranslation} from 'react-i18next';
 import {spaces} from '@app/theme';
 import {useGetRestaurants} from '@api/restaurants';
+import {RestaurantSearch} from '../components/RestaurantSearch';
 
 // move this to separate file
 const dummyLoadingData = [{id: '1'}, {id: '2'}, {id: '3'}];
@@ -15,13 +14,10 @@ const dummyLoadingData = [{id: '1'}, {id: '2'}, {id: '3'}];
 const ResutaurantsScreen = () => {
   const {data, isLoading} = useGetRestaurants('37.7749295,-122.4194155');
   const [isError] = useState<boolean>(false);
-  const {t} = useTranslation();
 
   return (
     <View flex={1} padding={spaces[3]}>
-      <View pb={spaces[3]}>
-        <SearchBar label={t('searchRestaurnats')} />
-      </View>
+      <RestaurantSearch />
       <View>
         <MakeRequestWrapper
           data={data?.results}
