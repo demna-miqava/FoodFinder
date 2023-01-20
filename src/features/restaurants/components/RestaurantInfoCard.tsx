@@ -15,23 +15,25 @@ export const RestaurantsInfoCard = ({
     name,
     icon,
     photos,
-    address,
-    openingHours,
+    opening_hours,
     rating,
-    isOpenNow,
-    isClosedTemporarily,
+    business_status,
+    address = 'some address',
   } = restaurant;
   const theme = useTheme();
 
   const {t} = useTranslation();
-
-  const ratingArray = Array.from(new Array(Math.ceil(rating)));
+  const ratingArray = Array.from({length: Math.ceil(rating)}, () =>
+    Math.random(),
+  );
   //https://github.com/Monte9/react-native-ratings
   return (
     <View style={stylesBuilder(theme).container}>
       <Image
         source={{
-          uri: photos[0],
+          uri:
+            // photos[0]
+            'https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg',
         }}
         style={stylesBuilder(theme).mainImageStyles}
       />
@@ -39,15 +41,15 @@ export const RestaurantsInfoCard = ({
         <Text fontSize="body">{name}</Text>
         <HStack justifyContent="space-between" alignItems="center">
           <HStack>
-            {ratingArray.map(() => (
-              <StarIcon />
+            {ratingArray.map(item => (
+              <StarIcon key={item} />
             ))}
           </HStack>
           <HStack alignItems="center" space={1}>
-            {!isClosedTemporarily && (
+            {business_status === 'CLOSED_TEMPORARILY' && (
               <Text color="red.500">{t('temporarilyClosed')}</Text>
             )}
-            {isOpenNow && <OpenNowIcon />}
+            {opening_hours?.open_now && <OpenNowIcon />}
             <Image
               source={{
                 uri: icon,
