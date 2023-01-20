@@ -1,6 +1,6 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {View} from 'native-base';
+import {useTheme, View} from 'native-base';
 import {Text} from '@components/Typography';
 import ResutaurantsScreen from '@features/restaurants/screens/RestaurantsScreen';
 import {useNoWifiToast} from '@hooks/';
@@ -26,6 +26,7 @@ function SettingsScreen() {
 const Tab = createBottomTabNavigator();
 
 export const Route = () => {
+  const theme = useTheme();
   useNoWifiToast();
 
   React.useEffect(() => {
@@ -49,16 +50,13 @@ export const Route = () => {
           }
           return <Icon name={iconName} color={color} size={size} />;
         },
+        tabBarActiveTintColor: theme.colors.ui.teal,
+        tabBarInactiveTintColor: theme.colors.ui.gray,
         tabBarStyle: {
           height: isPlatform('android') ? 60 : 71,
           paddingBottom: isPlatform('android') ? 12 : 22,
         },
-      })}
-      // @ts-ignore
-      tabBarOptions={{
-        activeTintColor: 'teal',
-        inactiveTintColor: 'gray',
-      }}>
+      })}>
       <Tab.Screen
         name="Restaurants"
         component={ResutaurantsScreen}

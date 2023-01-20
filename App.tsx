@@ -23,7 +23,7 @@ const App = () => {
       <NavigationContainer>
         <NativeBaseProvider theme={theme}>
           <SafeAreaView style={{flex: 1}} edges={['top']}>
-            <StatusBar backgroundColor="white" barStyle="dark-content" />
+            <StatusBar backgroundColor="#fff" barStyle="dark-content" />
             <Route />
           </SafeAreaView>
         </NativeBaseProvider>

@@ -25,12 +25,7 @@ const ResutaurantsScreen = () => {
   const {t} = useTranslation();
   useNoWifiToast();
   return (
-    <View
-      flex={1}
-      padding={spaces[3]}
-      // style={{backgroundColor: 'teal'}}
-      // check here
-    >
+    <View flex={1} padding={spaces[3]}>
       <View pb={spaces[3]}>
         <SearchBar label={t('searchRestaurnats')} />
       </View>
@@ -54,7 +49,7 @@ const ResutaurantsScreen = () => {
               <FlatList
                 data={items}
                 showsVerticalScrollIndicator={false}
-                mb={35}
+                mb={spaces[4] + 4}
                 renderItem={({item}) => {
                   return (
                     <RestaurantsInfoCard

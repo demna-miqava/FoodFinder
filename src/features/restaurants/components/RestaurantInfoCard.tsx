@@ -45,7 +45,7 @@ export const RestaurantsInfoCard = ({
           </HStack>
           <HStack alignItems="center" space={1}>
             {business_status === 'CLOSED_TEMPORARILY' && (
-              <Text color="red.500">{t('temporarilyClosed')}</Text>
+              <Text color="ui.error">{t('temporarilyClosed')}</Text>
             )}
             {opening_hours?.open_now && <OpenNowIcon />}
             <Image
