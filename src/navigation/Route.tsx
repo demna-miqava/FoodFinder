@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useTheme, View} from 'native-base';
 import {Text} from '@components/Typography';
@@ -6,6 +6,7 @@ import ResutaurantsScreen from '@features/restaurants/screens/RestaurantsScreen'
 import {useNoWifiToast} from '@hooks/';
 import {isPlatform, userStorage} from '@helpers/';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {Platform} from '@constants/';
 
 function MapsScreen() {
   return (
@@ -35,6 +36,8 @@ export const Route = () => {
     })();
   }, []);
 
+  const isAndroid = useMemo(() => isPlatform(Platform.Android), []);
+
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -53,8 +56,8 @@ export const Route = () => {
         tabBarActiveTintColor: theme.colors.ui.teal,
         tabBarInactiveTintColor: theme.colors.ui.gray,
         tabBarStyle: {
-          height: isPlatform('android') ? 60 : 71,
-          paddingBottom: isPlatform('android') ? 12 : 22,
+          height: isAndroid ? 60 : 71,
+          paddingBottom: isAndroid ? 12 : 22,
         },
       })}>
       <Tab.Screen
