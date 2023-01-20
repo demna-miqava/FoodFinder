@@ -7,17 +7,25 @@ import {RestaurantCardType} from '@app/types';
 import {spaces} from '@app/theme';
 import {useGetRestaurants} from '@api/restaurants';
 import {RestaurantSearch} from '../components/RestaurantSearch';
+import {useDebounce} from '@hooks/';
 
 // move this to separate file
 const dummyLoadingData = [{id: '1'}, {id: '2'}, {id: '3'}];
 
 const ResutaurantsScreen = () => {
-  const {data, isLoading} = useGetRestaurants('37.7749295,-122.4194155');
-  const [isError] = useState<boolean>(false);
+  const [searchCity, setSearchCity] = useState<string>('');
+  const {debouncedValue: debouncedSearchedCity} = useDebounce({
+    value: searchCity,
+    delay: 1000,
+  });
+  // pass debouncedSearchedCity to useGetRestaurants
+  const {data, isLoading, isError} = useGetRestaurants(
+    '37.7749295,-122.4194155',
+  );
 
   return (
     <View flex={1} padding={spaces[3]}>
-      <RestaurantSearch />
+      <RestaurantSearch setSearchCity={setSearchCity} />
       <View>
         <MakeRequestWrapper
           data={data?.results}

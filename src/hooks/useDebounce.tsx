@@ -18,5 +18,5 @@ export const useDebounce = ({value, delay}: Props) => {
     };
   }, [value, delay]);
 
-  return debouncedValue;
+  return {debouncedValue};
 };

@@ -5,11 +5,13 @@ import {spaces} from '../../theme';
 
 type Props = {
   label: string;
+  onChange: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export const SearchBar = ({label}: Props) => {
+export const SearchBar = ({label, onChange}: Props) => {
   return (
     <Input
+      onChangeText={onChange}
       placeholder={label}
       width="100%"
       borderRadius={spaces[3]}
