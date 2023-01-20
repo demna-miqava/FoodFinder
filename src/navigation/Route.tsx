@@ -54,6 +54,7 @@ export const Route = () => {
           paddingBottom: isPlatform('android') ? 12 : 22,
         },
       })}
+      // @ts-ignore
       tabBarOptions={{
         activeTintColor: 'teal',
         inactiveTintColor: 'gray',

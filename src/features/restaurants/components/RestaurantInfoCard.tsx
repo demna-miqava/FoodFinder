@@ -31,9 +31,7 @@ export const RestaurantsInfoCard = ({
     <View style={stylesBuilder(theme).container}>
       <Image
         source={{
-          uri:
-            // photos[0]
-            'https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg',
+          uri: photos[0],
         }}
         style={stylesBuilder(theme).mainImageStyles}
       />

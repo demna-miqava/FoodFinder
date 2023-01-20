@@ -16,7 +16,7 @@ const dummyLoadingData = [{id: '1'}, {id: '2'}, {id: '3'}];
 const ResutaurantsScreen = () => {
   const {data} = useGetRestaurants('37.7749295,-122.4194155');
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [isError, setIsError] = useState<boolean>(false);
+  const [isError] = useState<boolean>(false);
   React.useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
@@ -53,7 +53,17 @@ const ResutaurantsScreen = () => {
               <FlatList
                 data={items}
                 renderItem={({item}) => {
-                  return <RestaurantsInfoCard restaurant={item} />;
+                  return (
+                    <RestaurantsInfoCard
+                      restaurant={{
+                        ...item,
+                        // add this temporarily while using fake data
+                        photos: [
+                          'https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg',
+                        ],
+                      }}
+                    />
+                  );
                 }}
                 keyExtractor={item => item.place_id}
               />
