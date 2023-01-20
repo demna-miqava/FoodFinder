@@ -28,8 +28,9 @@ const ResutaurantsScreen = () => {
     <View
       flex={1}
       padding={spaces[3]}
+      // style={{backgroundColor: 'teal'}}
       // check here
-      style={{backgroundColor: 'teal'}}>
+    >
       <View pb={spaces[3]}>
         <SearchBar label={t('searchRestaurnats')} />
       </View>
@@ -52,6 +53,8 @@ const ResutaurantsScreen = () => {
             return (
               <FlatList
                 data={items}
+                showsVerticalScrollIndicator={false}
+                mb={35}
                 renderItem={({item}) => {
                   return (
                     <RestaurantsInfoCard
