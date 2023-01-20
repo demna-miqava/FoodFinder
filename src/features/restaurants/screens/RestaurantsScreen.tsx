@@ -14,14 +14,8 @@ import {useGetRestaurants} from '@api/restaurants';
 const dummyLoadingData = [{id: '1'}, {id: '2'}, {id: '3'}];
 
 const ResutaurantsScreen = () => {
-  const {data} = useGetRestaurants('37.7749295,-122.4194155');
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const {data, isLoading} = useGetRestaurants('37.7749295,-122.4194155');
   const [isError] = useState<boolean>(false);
-  React.useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-  }, []);
   const {t} = useTranslation();
   useNoWifiToast();
   return (
