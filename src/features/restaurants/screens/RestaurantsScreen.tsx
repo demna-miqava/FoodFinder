@@ -5,7 +5,6 @@ import {RestaurantsInfoCard} from '../components/RestaurantInfoCard';
 import {CardSkeleton} from '@components/Skeleton';
 import {MakeRequestWrapper} from '@app/containers';
 import {RestaurantCardType} from '@app/types';
-import {useNoWifiToast} from '@app/hooks';
 import {useTranslation} from 'react-i18next';
 import {spaces} from '@app/theme';
 import {useGetRestaurants} from '@api/restaurants';
@@ -17,7 +16,7 @@ const ResutaurantsScreen = () => {
   const {data, isLoading} = useGetRestaurants('37.7749295,-122.4194155');
   const [isError] = useState<boolean>(false);
   const {t} = useTranslation();
-  useNoWifiToast();
+
   return (
     <View flex={1} padding={spaces[3]}>
       <View pb={spaces[3]}>
