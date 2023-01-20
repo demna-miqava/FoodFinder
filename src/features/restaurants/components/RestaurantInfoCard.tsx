@@ -5,6 +5,7 @@ import {Image} from '@components/Image';
 import {Text} from '@components/Typography';
 import {RestaurantCardType} from '@type/';
 import {useTranslation} from 'react-i18next';
+import {BusinessStatusEnum} from '@app/constants';
 
 export const RestaurantsInfoCard = ({
   restaurant,
@@ -44,7 +45,7 @@ export const RestaurantsInfoCard = ({
             ))}
           </HStack>
           <HStack alignItems="center" space={1}>
-            {business_status === 'CLOSED_TEMPORARILY' && (
+            {business_status === BusinessStatusEnum.CLOSED_TEMPORARILY && (
               <Text color="ui.error">{t('temporarilyClosed')}</Text>
             )}
             {opening_hours?.open_now && <OpenNowIcon />}

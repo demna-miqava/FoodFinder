@@ -1,3 +1,5 @@
+import {BusinessStatusEnum} from '@constants/';
+
 export interface RestaurantCardType {
   name: string;
   icon: any;
@@ -7,6 +9,6 @@ export interface RestaurantCardType {
   opening_hours: {
     open_now: boolean;
   };
-  business_status: 'OPERATIONAL' | 'CLOSED_TEMPORARILY';
+  business_status: keyof typeof BusinessStatusEnum;
   place_id: string;
 }
