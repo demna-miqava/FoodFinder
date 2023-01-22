@@ -10,6 +10,8 @@ export const mocks = {
   '37.7749295,-122.4194155': san_francisco,
 };
 
+export {locations} from './location.mock';
+
 export const mockImages = [
   'https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg',
   'https://www.foodiesfeed.com/wp-content/uploads/2019/04/mae-mu-oranges-ice-600x750.jpg',
