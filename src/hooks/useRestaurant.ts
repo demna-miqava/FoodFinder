@@ -8,15 +8,18 @@ export const useRestaurant = () => {
     value: searchCity,
     delay: 1000,
   });
+
   const {data: locationData = '', refetch: refetchLocation} = useGetLocation(
     debouncedSearchedCity as any,
     {
       enabled: false,
     },
   );
+
   const {
     data: restaurantsData,
     isLoading,
+    isFetching,
     isError,
     refetch: refetchRestaurants,
   } = useGetRestaurants(locationData!);
@@ -36,10 +39,11 @@ export const useRestaurant = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locationData]);
+
   return {
     setSearchCity,
     restaurantsData,
-    isLoading,
+    isLoading: isFetching || isLoading,
     isError,
   };
 };
