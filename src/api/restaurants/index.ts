@@ -1,7 +1,7 @@
 import {useQuery} from 'react-query';
 import {customRestaunrantsInstance} from './restaurants.instance';
 import {mocks, locations} from './mock';
-import {LocationResults} from '@type/';
+import {LocationResults, UseQueryOptionsType} from '@type/';
 
 export const getRestaurants = (location: string) => {
   return customRestaunrantsInstance({
@@ -37,7 +37,10 @@ const transformLocation = (data: LocationResults) => {
   return `${lat},${lng}`;
 };
 
-export const useGetLocation = (searchTerm: string, options: any) => {
+export const useGetLocation = (
+  searchTerm: string,
+  options: UseQueryOptionsType,
+) => {
   return useQuery(
     'location',
     async () => {
