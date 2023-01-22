@@ -3,7 +3,7 @@ import {customRestaunrantsInstance} from './restaurants.instance';
 import {mocks, locations} from './mock';
 import {LocationResults} from '@type/';
 
-export const getRestaurantsNearby = (location: string) => {
+export const getRestaurants = (location: string) => {
   return customRestaunrantsInstance({
     url: 'some api address',
     method: 'get',
@@ -23,7 +23,7 @@ export const getLocation = (searchTerm: string) => {
 export const useGetRestaurants = (location: string) => {
   return useQuery('restaurants', async () => {
     // replace with this in the future
-    // const data = await getRestaurantsNearby(location);
+    // const data = await getRestaurants(location);
     // @ts-ignore
     const data = mocks[location];
     return data;
