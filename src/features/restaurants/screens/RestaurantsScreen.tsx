@@ -1,60 +1,27 @@
 import {FlatList, View} from 'native-base';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {RestaurantsInfoCard} from '../components/RestaurantInfoCard';
 import {CardSkeleton} from '@components/Skeleton';
 import {MakeRequestWrapper} from '@app/containers';
 import {RestaurantCardType} from '@app/types';
 import {spaces} from '@app/theme';
-import {useGetLocation, useGetRestaurants} from '@api/restaurants';
 import {RestaurantSearch} from '../components/RestaurantSearch';
-import {useDebounce} from '@hooks/';
+import {useRestaurant} from '@hooks/';
 
 // move this to separate file
 const dummyLoadingData = [{id: '1'}, {id: '2'}, {id: '3'}];
 
 const ResutaurantsScreen = () => {
-  const [searchCity, setSearchCity] = useState<string>('');
-  const {debouncedValue: debouncedSearchedCity} = useDebounce({
-    value: searchCity,
-    delay: 1000,
-  });
-  const {data: locationData = '', refetch: refetchLocation} = useGetLocation(
-    debouncedSearchedCity as any,
-    {
-      enabled: false,
-    },
-  );
-  const {
-    data,
-    isLoading,
-    isError,
-    refetch: refetchRestaurants,
-  } = useGetRestaurants(locationData!);
-
-  useEffect(() => {
-    if (debouncedSearchedCity) {
-      refetchLocation();
-    } else {
-      // use current location
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedSearchedCity]);
-
-  useEffect(() => {
-    if (locationData) {
-      refetchRestaurants();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [locationData]);
+  const {setSearchCity, restaurantsData, isLoading, isError} = useRestaurant();
 
   return (
     <View flex={1} padding={spaces[3]}>
       <RestaurantSearch setSearchCity={setSearchCity} />
       <View>
         <MakeRequestWrapper
-          data={data?.results}
+          data={restaurantsData?.results}
           isFetching={isLoading}
-          isEmpty={data?.length === 0}
+          isEmpty={restaurantsData?.length === 0}
           renderLoader={() => {
             return (
               <FlatList
