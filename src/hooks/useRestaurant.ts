@@ -2,6 +2,9 @@ import {useEffect, useState} from 'react';
 import {useGetLocation, useGetRestaurants} from '@api/restaurants';
 import {useDebounce} from './useDebounce';
 
+// use this as default location before getting permission to location
+const defaultLocation = '37.7749295,-122.4194155';
+
 export const useRestaurant = () => {
   const [searchCity, setSearchCity] = useState<string>('');
   const {debouncedValue: debouncedSearchedCity} = useDebounce({
@@ -9,7 +12,7 @@ export const useRestaurant = () => {
     delay: 1000,
   });
 
-  const {data: locationData = '', refetch: refetchLocation} = useGetLocation(
+  const {data: locationData, refetch: refetchLocation} = useGetLocation(
     debouncedSearchedCity as any,
     {
       enabled: false,
@@ -22,13 +25,11 @@ export const useRestaurant = () => {
     isFetching,
     isError,
     refetch: refetchRestaurants,
-  } = useGetRestaurants(locationData!);
+  } = useGetRestaurants(locationData || defaultLocation);
 
   useEffect(() => {
     if (debouncedSearchedCity) {
       refetchLocation();
-    } else {
-      // use current location
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearchedCity]);
