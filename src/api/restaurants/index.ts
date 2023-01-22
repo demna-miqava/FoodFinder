@@ -37,13 +37,17 @@ const transformLocation = (data: LocationResults) => {
   return `${lat},${lng}`;
 };
 
-export const useGetLocation = (searchTerm: string) => {
-  return useQuery('location', async () => {
-    // replace with this in the future
-    // const data = await getLocation(searchTerm);
-    // @ts-ignore
-    const locationData = locations[searchTerm];
-    const result = transformLocation(locationData);
-    return result;
-  });
+export const useGetLocation = (searchTerm: string, options: any) => {
+  return useQuery(
+    'location',
+    async () => {
+      // replace with this in the future
+      // const data = await getLocation(searchTerm);
+      // @ts-ignore
+      const locationData = locations[searchTerm];
+      const result = transformLocation(locationData);
+      return result;
+    },
+    options,
+  );
 };

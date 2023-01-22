@@ -1,11 +1,11 @@
 import {FlatList, View} from 'native-base';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {RestaurantsInfoCard} from '../components/RestaurantInfoCard';
 import {CardSkeleton} from '@components/Skeleton';
 import {MakeRequestWrapper} from '@app/containers';
 import {RestaurantCardType} from '@app/types';
 import {spaces} from '@app/theme';
-import {useGetRestaurants} from '@api/restaurants';
+import {useGetLocation, useGetRestaurants} from '@api/restaurants';
 import {RestaurantSearch} from '../components/RestaurantSearch';
 import {useDebounce} from '@hooks/';
 
@@ -18,10 +18,34 @@ const ResutaurantsScreen = () => {
     value: searchCity,
     delay: 1000,
   });
-  // pass debouncedSearchedCity to useGetRestaurants
-  const {data, isLoading, isError} = useGetRestaurants(
-    '37.7749295,-122.4194155',
+  const {data: locationData = '', refetch: refetchLocation} = useGetLocation(
+    debouncedSearchedCity as any,
+    {
+      enabled: false,
+    },
   );
+  const {
+    data,
+    isLoading,
+    isError,
+    refetch: refetchRestaurants,
+  } = useGetRestaurants(locationData!);
+
+  useEffect(() => {
+    if (debouncedSearchedCity) {
+      refetchLocation();
+    } else {
+      // use current location
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedSearchedCity]);
+
+  useEffect(() => {
+    if (locationData) {
+      refetchRestaurants();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [locationData]);
 
   return (
     <View flex={1} padding={spaces[3]}>
