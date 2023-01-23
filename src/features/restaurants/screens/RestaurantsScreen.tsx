@@ -32,7 +32,7 @@ const ResutaurantsScreen = () => {
             );
           }}
           isError={isError}
-          renderData={(items: RestaurantCardType[]) => {
+          renderData={(items: (RestaurantCardType & {vicinity: string})[]) => {
             return (
               <FlatList
                 data={items}
@@ -47,6 +47,7 @@ const ResutaurantsScreen = () => {
                         photos: [
                           'https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg',
                         ],
+                        address: item.vicinity,
                       }}
                     />
                   );
