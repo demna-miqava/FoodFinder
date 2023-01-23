@@ -1,33 +1,9 @@
-import React, {useMemo} from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {useTheme, View} from 'native-base';
-import {Text} from '@components/Typography';
-import ResutaurantsScreen from '@features/restaurants/screens/RestaurantsScreen';
+import React from 'react';
 import {useNoWifiToast} from '@hooks/';
-import {isPlatform, userStorage} from '@helpers/';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {Platform} from '@constants/';
-
-function MapsScreen() {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
-
-function SettingsScreen() {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
-
-const Tab = createBottomTabNavigator();
+import {userStorage} from '@helpers/';
+import {TabNavigation} from './TabNavigation';
 
 export const Route = () => {
-  const theme = useTheme();
   useNoWifiToast();
 
   React.useEffect(() => {
@@ -36,45 +12,5 @@ export const Route = () => {
     })();
   }, []);
 
-  const isAndroid = useMemo(() => isPlatform(Platform.Android), []);
-
-  return (
-    <Tab.Navigator
-      screenOptions={({route}) => ({
-        tabBarIcon: ({color, size}) => {
-          let iconName = '';
-
-          if (route.name === 'Restaurants') {
-            iconName = 'md-restaurant';
-          } else if (route.name === 'Settings') {
-            iconName = 'md-settings';
-          } else if (route.name === 'Maps') {
-            iconName = 'md-map';
-          }
-          return <Icon name={iconName} color={color} size={size} />;
-        },
-        tabBarActiveTintColor: theme.colors.ui.teal,
-        tabBarInactiveTintColor: theme.colors.ui.gray,
-        tabBarStyle: {
-          height: isAndroid ? 60 : 71,
-          paddingBottom: isAndroid ? 12 : 22,
-        },
-      })}>
-      <Tab.Screen
-        name="Restaurants"
-        component={ResutaurantsScreen}
-        options={{headerShown: false}}
-      />
-      <Tab.Screen
-        name="Settings"
-        component={SettingsScreen}
-        options={{headerShown: false}}
-      />
-      <Tab.Screen
-        name="Maps"
-        component={MapsScreen}
-        options={{headerShown: false}}
-      />
-    </Tab.Navigator>
-  );
+  return <TabNavigation />;
 };

@@ -11,7 +11,7 @@ import {useRestaurant} from '@hooks/';
 // move this to separate file
 const dummyLoadingData = [{id: '1'}, {id: '2'}, {id: '3'}];
 
-const ResutaurantsScreen = () => {
+export const RestaurantsScreen = () => {
   const {setSearchCity, restaurantsData, isLoading, isError} = useRestaurant();
 
   return (
@@ -61,5 +61,3 @@ const ResutaurantsScreen = () => {
     </View>
   );
 };
-
-export default ResutaurantsScreen;
