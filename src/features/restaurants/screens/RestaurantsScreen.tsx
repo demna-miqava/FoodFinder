@@ -1,11 +1,10 @@
 import {FlatList, View} from 'native-base';
 import React from 'react';
-import {RestaurantsInfoCard} from '../components/RestaurantInfoCard';
 import {CardSkeleton} from '@components/Skeleton';
 import {MakeRequestWrapper} from '@app/containers';
 import {RestaurantCardType} from '@app/types';
 import {spaces} from '@app/theme';
-import {RestaurantSearch} from '../components/RestaurantSearch';
+import {RestaurantSearch, RestaurantsInfoCard} from '../components/';
 import {useRestaurant} from '@hooks/';
 import {TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
