@@ -1,6 +1,15 @@
-import {Text} from '@components/Typography';
 import React from 'react';
+import {View} from 'native-base';
+import {useRoute} from '@react-navigation/native';
+import {RestaurantsInfoCard} from '../components';
 
 export const RestaurantsDetailsScreen = () => {
-  return <Text>RestaurantsDetailsScreen</Text>;
+  const {params} = useRoute<any>();
+  const {restaurant} = params;
+
+  return (
+    <View>
+      <RestaurantsInfoCard restaurant={restaurant} />
+    </View>
+  );
 };

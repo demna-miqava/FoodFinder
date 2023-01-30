@@ -40,19 +40,21 @@ export const RestaurantsScreen = () => {
                 showsVerticalScrollIndicator={false}
                 mb={spaces[4] + 4}
                 renderItem={({item}) => {
+                  const restaurantData = {
+                    ...item,
+                    photos: [
+                      'https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg',
+                    ],
+                    address: item.vicinity,
+                  };
                   return (
                     <TouchableOpacity
-                      onPress={() => navigation.push('RestaurantDetails')}>
-                      <RestaurantsInfoCard
-                        restaurant={{
-                          ...item,
-                          // add this temporarily while using fake data
-                          photos: [
-                            'https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg',
-                          ],
-                          address: item.vicinity,
-                        }}
-                      />
+                      onPress={() =>
+                        navigation.push('RestaurantDetails', {
+                          restaurant: restaurantData,
+                        })
+                      }>
+                      <RestaurantsInfoCard restaurant={restaurantData} />
                     </TouchableOpacity>
                   );
                 }}
