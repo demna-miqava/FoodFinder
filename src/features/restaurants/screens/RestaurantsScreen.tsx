@@ -7,13 +7,15 @@ import {RestaurantCardType} from '@app/types';
 import {spaces} from '@app/theme';
 import {RestaurantSearch} from '../components/RestaurantSearch';
 import {useRestaurant} from '@hooks/';
+import {TouchableOpacity} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 // move this to separate file
 const dummyLoadingData = [{id: '1'}, {id: '2'}, {id: '3'}];
 
 export const RestaurantsScreen = () => {
   const {setSearchCity, restaurantsData, isLoading, isError} = useRestaurant();
-
+  const navigation = useNavigation<any>();
   return (
     <View flex={1} padding={spaces[3]}>
       <RestaurantSearch setSearchCity={setSearchCity} />
@@ -40,16 +42,19 @@ export const RestaurantsScreen = () => {
                 mb={spaces[4] + 4}
                 renderItem={({item}) => {
                   return (
-                    <RestaurantsInfoCard
-                      restaurant={{
-                        ...item,
-                        // add this temporarily while using fake data
-                        photos: [
-                          'https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg',
-                        ],
-                        address: item.vicinity,
-                      }}
-                    />
+                    <TouchableOpacity
+                      onPress={() => navigation.push('RestaurantDetails')}>
+                      <RestaurantsInfoCard
+                        restaurant={{
+                          ...item,
+                          // add this temporarily while using fake data
+                          photos: [
+                            'https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg',
+                          ],
+                          address: item.vicinity,
+                        }}
+                      />
+                    </TouchableOpacity>
                   );
                 }}
                 keyExtractor={item => item.place_id}

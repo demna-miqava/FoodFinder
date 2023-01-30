@@ -12,7 +12,8 @@ const Details = () => {
 
 export const RestaurantStackComponent = () => {
   return (
-    <RestaurantStack.Navigator screenOptions={{headerShown: false}}>
+    <RestaurantStack.Navigator
+      screenOptions={{headerShown: false, animation: 'fade_from_bottom'}}>
       <RestaurantStack.Screen
         name="Restaurants"
         component={RestaurantsScreen}
