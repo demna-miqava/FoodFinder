@@ -1,12 +1,16 @@
 import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
-import {View} from 'native-base';
+import {HStack, View} from 'native-base';
 import Accordion from 'react-native-collapsible/Accordion';
 import {Text} from '../Typography';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {spaces} from '@app/theme';
 
 interface Content {
   title: string;
   content: React.ReactElement;
+  icon: string;
+  iconSize: number;
 }
 
 type Props = {
@@ -20,11 +24,19 @@ export const AccordionComponent = ({content}: Props) => {
     setActiveSections(sections);
   };
 
-  const renderHeader = (section: Content) => {
+  const renderHeader = (
+    {title, icon, iconSize}: Content,
+    _: any,
+    isActive: boolean,
+  ) => {
     return (
-      <View>
-        <Text>{section.title}</Text>
-      </View>
+      <HStack justifyContent="space-between" py={3}>
+        <HStack space={2} alignItems="center">
+          <Icon name={icon} size={iconSize} />
+          <Text fontSize="body">{title}</Text>
+        </HStack>
+        <Icon name={isActive ? 'arrow-up' : 'arrow-down'} size={iconSize} />
+      </HStack>
     );
   };
 
@@ -32,7 +44,7 @@ export const AccordionComponent = ({content}: Props) => {
     return <View>{section.content}</View>;
   };
   return (
-    <View>
+    <View px={spaces[3]}>
       <Accordion
         align="bottom"
         activeSections={activeSections}
