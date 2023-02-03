@@ -16,10 +16,10 @@ export const accordionContentData = [
     content: (
       <ContentContainer>
         <Text>Eggs Benedict</Text>
-        <Text>ClassicBreakfast</Text>
+        <Text>Classic Breakfast</Text>
       </ContentContainer>
     ),
-    icon: 'cafe-sharp',
+    icon: 'local-cafe',
     iconSize: 20,
   },
   {
@@ -30,7 +30,7 @@ export const accordionContentData = [
         <Text>Steak Sandwich</Text>
       </ContentContainer>
     ),
-    icon: 'md-wine-outline',
+    icon: 'lunch-dining',
     iconSize: 20,
   },
   {
@@ -42,7 +42,7 @@ export const accordionContentData = [
         <Text>Steak Frites</Text>
       </ContentContainer>
     ),
-    icon: 'md-wine-outline',
+    icon: 'dinner-dining',
     iconSize: 20,
   },
   {
@@ -55,7 +55,7 @@ export const accordionContentData = [
         <Text>Coke</Text>
       </ContentContainer>
     ),
-    icon: 'md-wine-outline',
+    icon: 'wine-bar',
     iconSize: 20,
   },
 ];
