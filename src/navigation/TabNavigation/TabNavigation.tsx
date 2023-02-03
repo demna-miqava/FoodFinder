@@ -5,14 +5,7 @@ import {isPlatform} from '@helpers/';
 import {Platform} from '@constants/';
 import {RestaurantsStack} from '../stacks';
 import Icon from 'react-native-vector-icons/Ionicons';
-
-function MapsScreen() {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
+import {MapScreen} from '@features/map/screens';
 
 function SettingsScreen() {
   return (
@@ -56,13 +49,13 @@ export const TabNavigation = () => {
         options={{headerShown: false}}
       />
       <Tab.Screen
-        name="Settings"
-        component={SettingsScreen}
+        name="Maps"
+        component={MapScreen}
         options={{headerShown: false}}
       />
       <Tab.Screen
-        name="Maps"
-        component={MapsScreen}
+        name="Settings"
+        component={SettingsScreen}
         options={{headerShown: false}}
       />
     </Tab.Navigator>
