@@ -3,7 +3,7 @@ import {TouchableOpacity} from 'react-native';
 import {HStack, View} from 'native-base';
 import Accordion from 'react-native-collapsible/Accordion';
 import {Text} from '../Typography';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import {spaces} from '@app/theme';
 
 interface Content {
@@ -35,7 +35,10 @@ export const AccordionComponent = ({content}: Props) => {
           <Icon name={icon} size={iconSize} />
           <Text fontSize="body">{title}</Text>
         </HStack>
-        <Icon name={isActive ? 'arrow-up' : 'arrow-down'} size={iconSize} />
+        <Icon
+          name={isActive ? 'keyboard-arrow-up' : 'keyboard-arrow-down'}
+          size={iconSize}
+        />
       </HStack>
     );
   };
@@ -44,7 +47,7 @@ export const AccordionComponent = ({content}: Props) => {
     return <View>{section.content}</View>;
   };
   return (
-    <View px={spaces[3]}>
+    <View my={spaces[3]}>
       <Accordion
         align="bottom"
         activeSections={activeSections}
