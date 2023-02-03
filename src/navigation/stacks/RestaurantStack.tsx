@@ -13,7 +13,7 @@ export const RestaurantStackComponent = () => {
     <RestaurantStack.Navigator
       screenOptions={{headerShown: false, animation: 'fade_from_bottom'}}>
       <RestaurantStack.Screen
-        name="Restaurants"
+        name="RestaurantsHome"
         component={RestaurantsScreen}
       />
       <RestaurantStack.Screen

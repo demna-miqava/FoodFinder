@@ -9,8 +9,10 @@ import {BusinessStatusEnum} from '@app/constants';
 
 export const RestaurantsInfoCard = ({
   restaurant,
+  children,
 }: {
   restaurant: RestaurantCardType;
+  children?: React.ReactElement;
 }) => {
   const {
     name,
@@ -59,6 +61,7 @@ export const RestaurantsInfoCard = ({
         </HStack>
         <Text>{address}</Text>
       </View>
+      {children}
     </View>
   );
 };

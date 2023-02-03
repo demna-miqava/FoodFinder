@@ -11,8 +11,9 @@ export const RestaurantsDetailsScreen = () => {
 
   return (
     <View>
-      <RestaurantsInfoCard restaurant={restaurant} />
-      <AccordionComponent content={accordionContentData} />
+      <RestaurantsInfoCard restaurant={restaurant}>
+        <AccordionComponent content={accordionContentData} />
+      </RestaurantsInfoCard>
     </View>
   );
 };
