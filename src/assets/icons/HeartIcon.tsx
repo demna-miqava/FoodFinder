@@ -3,13 +3,13 @@ import {SvgCss} from 'react-native-svg';
 import {SvgIconProps} from 'src/types/svg.types';
 
 const xml = (props: SvgIconProps) => {
-  const {width = 16, fill = 'gray', height = 16} = props;
+  const {width = 16, fill = 'gray', bgFill = 'white', height = 16} = props;
   return `
 		<svg
 			width="${width}"
 			height="${height}"
 			viewBox="0 0 12 12"
-			fill="${fill}"
+			fill="${bgFill}"
 			xmlns="http://www.w3.org/2000/svg"
 		>
 			<path
