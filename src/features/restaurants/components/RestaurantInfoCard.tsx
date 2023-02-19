@@ -1,6 +1,6 @@
-import {HStack, useTheme, View} from 'native-base';
+import {HStack, Pressable, useTheme, View} from 'native-base';
 import React from 'react';
-import {OpenNowIcon, StarIcon} from '@icons/';
+import {HeartIcon, OpenNowIcon, StarIcon} from '@icons/';
 import {Image} from '@components/Image';
 import {Text} from '@components/Typography';
 import {RestaurantCardType} from '@type/';
@@ -39,7 +39,12 @@ export const RestaurantsInfoCard = ({
         style={stylesBuilder(theme).mainImageStyles}
       />
       <View style={stylesBuilder(theme).infoContainer}>
-        <Text fontSize="body">{name}</Text>
+        <HStack alignItems="center" justifyContent="space-between">
+          <Text fontSize="body">{name}</Text>
+          <Pressable onPress={() => {}}>
+            <HeartIcon />
+          </Pressable>
+        </HStack>
         <HStack justifyContent="space-between" alignItems="center">
           <HStack>
             {ratingArray.map(item => (
