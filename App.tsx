@@ -8,6 +8,8 @@ import {Route} from '@navigations/';
 import {QueryClient, QueryClientProvider} from 'react-query';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import './src/assets/localization/';
+import {Provider} from 'react-redux';
+import {store} from '@app/redux';
 
 const queryClient = new QueryClient();
 
@@ -19,16 +21,18 @@ const App = () => {
   }, []);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <NavigationContainer>
-        <NativeBaseProvider theme={theme}>
-          <SafeAreaView style={{flex: 1}} edges={['top']}>
-            <StatusBar backgroundColor="#fff" barStyle="dark-content" />
-            <Route />
-          </SafeAreaView>
-        </NativeBaseProvider>
-      </NavigationContainer>
-    </QueryClientProvider>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <NavigationContainer>
+          <NativeBaseProvider theme={theme}>
+            <SafeAreaView style={{flex: 1}} edges={['top']}>
+              <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+              <Route />
+            </SafeAreaView>
+          </NativeBaseProvider>
+        </NavigationContainer>
+      </QueryClientProvider>
+    </Provider>
   );
 };
 
