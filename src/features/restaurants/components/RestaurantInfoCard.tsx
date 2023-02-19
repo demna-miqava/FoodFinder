@@ -22,7 +22,7 @@ export const RestaurantsInfoCard = ({
     opening_hours,
     rating,
     business_status,
-    address = 'some address',
+    address,
     place_id,
   } = restaurant;
   const theme = useTheme();

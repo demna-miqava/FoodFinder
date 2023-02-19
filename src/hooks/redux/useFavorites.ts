@@ -1,6 +1,6 @@
 import {
   clearFavorites as clearFavs,
-  injectFavorites as injectFavs,
+  hydrate as injectFavs,
   toggleFavorites as toggleFavs,
   useAppDispatch,
   useAppSelector,
@@ -16,7 +16,7 @@ export const useFavorites = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const injectFavorites = useCallback((data: string[]) => {
+  const hydrate = useCallback((data: string[]) => {
     dispatch(injectFavs(data));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -29,7 +29,7 @@ export const useFavorites = () => {
   return {
     favorites,
     clearFavorites,
-    injectFavorites,
+    hydrate,
     toggleFavorites,
   };
 };

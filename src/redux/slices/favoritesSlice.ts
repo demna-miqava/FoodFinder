@@ -6,7 +6,7 @@ const favoritesSlice = createSlice({
     favoritePlaces: [],
   },
   reducers: {
-    injectFavorites: (state, action) => {
+    hydrate: (state, action) => {
       state.favoritePlaces = action.payload;
     },
     clearFavorites: state => {
@@ -27,7 +27,7 @@ const favoritesSlice = createSlice({
   },
 });
 
-export const {injectFavorites, clearFavorites, toggleFavorites} =
+export const {hydrate, clearFavorites, toggleFavorites} =
   favoritesSlice.actions;
 
 export const favoriteReducer = favoritesSlice.reducer;
