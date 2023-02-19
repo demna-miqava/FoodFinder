@@ -6,9 +6,10 @@ import {spaces} from '../../theme';
 type Props = {
   label: string;
   onChange: React.Dispatch<React.SetStateAction<string>>;
+  icon: React.ReactElement;
 };
 
-export const SearchBar = ({label, onChange}: Props) => {
+export const SearchBar = ({label, onChange, icon = <SearchIcon />}: Props) => {
   return (
     <Input
       onChangeText={onChange}
@@ -16,8 +17,9 @@ export const SearchBar = ({label, onChange}: Props) => {
       width="100%"
       borderRadius={spaces[3]}
       py={3}
+      px={1}
       fontSize="caption"
-      InputLeftElement={<SearchIcon />}
+      InputLeftElement={icon}
     />
   );
 };
