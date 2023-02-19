@@ -35,8 +35,14 @@ export const RestaurantsInfoCard = ({
     Math.random(),
   );
 
-  const isFavorite = useMemo(
-    () => favorites.find(item => item === place_id),
+  const iconColors = useMemo(
+    () => {
+      const isFavorite = favorites.find(item => item === place_id);
+      return {
+        fill: isFavorite ? 'red' : 'gray',
+        bgFill: isFavorite ? 'red' : 'white',
+      };
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [favorites],
   );
@@ -57,7 +63,12 @@ export const RestaurantsInfoCard = ({
             onPress={() => {
               toggleFavorites(place_id);
             }}>
-            <HeartIcon fill={isFavorite ? 'red' : 'gray'} />
+            <HeartIcon
+              width={20}
+              height={20}
+              fill={iconColors.fill}
+              bgFill={iconColors.bgFill}
+            />
           </Pressable>
         </HStack>
         <HStack justifyContent="space-between" alignItems="center">
