@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const RestaurantsList = ({items}: Props) => {
-  const {navigation} = useNavigation<any>();
+  const navigation = useNavigation<any>();
   return (
     <FlatList
       data={items}
