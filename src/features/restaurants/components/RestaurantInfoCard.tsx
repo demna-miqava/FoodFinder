@@ -37,7 +37,9 @@ export const RestaurantsInfoCard = ({
 
   const iconColors = useMemo(
     () => {
-      const isFavorite = favorites.find(item => item === place_id);
+      const isFavorite = favorites.find(
+        (item: RestaurantCardType) => item.place_id === place_id,
+      );
       return {
         fill: isFavorite ? 'red' : 'gray',
         bgFill: isFavorite ? 'red' : 'white',
@@ -61,7 +63,7 @@ export const RestaurantsInfoCard = ({
           <Text fontSize="body">{name}</Text>
           <Pressable
             onPress={() => {
-              toggleFavorites(place_id);
+              toggleFavorites(restaurant);
             }}>
             <HeartIcon
               width={20}

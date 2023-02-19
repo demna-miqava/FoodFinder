@@ -1,3 +1,4 @@
+import {RestaurantCardType} from '@app/types';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 const favoritesSlice = createSlice({
@@ -12,13 +13,15 @@ const favoritesSlice = createSlice({
     clearFavorites: state => {
       state.favoritePlaces = [];
     },
-    toggleFavorites: (state, action: PayloadAction<string>) => {
+    toggleFavorites: (state, action: PayloadAction<RestaurantCardType>) => {
       const isPlaceInFavorites = state.favoritePlaces.find(
-        place => place === action.payload,
+        (place: RestaurantCardType) =>
+          place.place_id === action.payload.place_id,
       );
       if (isPlaceInFavorites) {
         state.favoritePlaces = state.favoritePlaces.filter(
-          place => place !== action.payload,
+          (place: RestaurantCardType) =>
+            place.place_id !== action.payload.place_id,
         );
       } else {
         state.favoritePlaces.push(action.payload);

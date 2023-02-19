@@ -5,6 +5,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '@app/redux';
+import {RestaurantCardType} from '@app/types';
 import {useCallback} from 'react';
 
 export const useFavorites = () => {
@@ -21,7 +22,7 @@ export const useFavorites = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const toggleFavorites = useCallback((data: string) => {
+  const toggleFavorites = useCallback((data: RestaurantCardType) => {
     dispatch(toggleFavs(data));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
