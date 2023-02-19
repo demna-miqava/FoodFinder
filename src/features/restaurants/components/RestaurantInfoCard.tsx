@@ -1,11 +1,12 @@
 import {HStack, Pressable, useTheme, View} from 'native-base';
-import React from 'react';
+import React, {useMemo} from 'react';
 import {HeartIcon, OpenNowIcon, StarIcon} from '@icons/';
 import {Image} from '@components/Image';
 import {Text} from '@components/Typography';
 import {RestaurantCardType} from '@type/';
 import {useTranslation} from 'react-i18next';
 import {BusinessStatusEnum} from '@app/constants';
+import {useFavorites} from '@app/hooks';
 
 export const RestaurantsInfoCard = ({
   restaurant,
@@ -22,14 +23,25 @@ export const RestaurantsInfoCard = ({
     rating,
     business_status,
     address = 'some address',
+    place_id,
   } = restaurant;
   const theme = useTheme();
 
   const {t} = useTranslation();
+
+  const {favorites, toggleFavorites} = useFavorites();
+
   const ratingArray = Array.from({length: Math.ceil(rating)}, () =>
     Math.random(),
   );
+
+  const isFavorite = useMemo(
+    () => favorites.find(item => item === place_id),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [favorites],
+  );
   //https://github.com/Monte9/react-native-ratings
+
   return (
     <View style={stylesBuilder(theme).container}>
       <Image
@@ -41,8 +53,11 @@ export const RestaurantsInfoCard = ({
       <View style={stylesBuilder(theme).infoContainer}>
         <HStack alignItems="center" justifyContent="space-between">
           <Text fontSize="body">{name}</Text>
-          <Pressable onPress={() => {}}>
-            <HeartIcon />
+          <Pressable
+            onPress={() => {
+              toggleFavorites(place_id);
+            }}>
+            <HeartIcon fill={isFavorite ? 'red' : 'gray'} />
           </Pressable>
         </HStack>
         <HStack justifyContent="space-between" alignItems="center">
