@@ -2,5 +2,6 @@
   "searchRestaurnats": "Search Restaurants",
   "temporarilyClosed": "Closed temporarily",
   "noInternetConnectionTitle": "Oops, you have no internet access",
-  "noInternetConnectionMessage": "Please turn wifi or mobile data on to see restaurants nearby"
+  "noInternetConnectionMessage": "Please turn wifi or mobile data on to see restaurants nearby",
+  "favorites": "Favorites"
 }

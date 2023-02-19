@@ -1,6 +1,7 @@
 {
   "searchRestaurnats": "მოძებნე რესტორნები",
   "temporarilyClosed": "დროებით დაკეტილია",
-  "noInternetConnectionTitle":"ოოპს, ინტერნეტთან წვდომა შეზღუდულია",
-  "noInternetConnectionMessage":"დაუკავშირდი ინტერნეტს რათა შეძლო ახლომდებარე რესტორნების ნახვა"
+  "noInternetConnectionTitle": "ოოპს, ინტერნეტთან წვდომა შეზღუდულია",
+  "noInternetConnectionMessage": "დაუკავშირდი ინტერნეტს რათა შეძლო ახლომდებარე რესტორნების ნახვა",
+  "favorites": "ფავორიტები"
 }
