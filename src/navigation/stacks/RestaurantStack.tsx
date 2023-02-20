@@ -2,7 +2,6 @@ import React from 'react';
 import {
   RestaurantsScreen,
   RestaurantsDetailsScreen,
-  FavouriteRestaurantsScreen,
 } from '@features/restaurants/screens/';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
