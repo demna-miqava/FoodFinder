@@ -21,10 +21,6 @@ export const RestaurantStackComponent = () => {
         name="RestaurantDetails"
         component={RestaurantsDetailsScreen}
       />
-      <RestaurantStack.Screen
-        name="FavouriteRestaurants"
-        component={FavouriteRestaurantsScreen}
-      />
     </RestaurantStack.Navigator>
   );
 };
