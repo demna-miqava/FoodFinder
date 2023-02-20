@@ -8,14 +8,22 @@ import {RestaurantCardType} from '@app/types';
 
 type Props = {
   items: (RestaurantCardType & {vicinity: string})[];
+  component: any;
+  horizontal?: boolean;
 };
 
-export const RestaurantsList = ({items}: Props) => {
+export const RestaurantsList = ({
+  items,
+  component,
+  horizontal = false,
+}: Props) => {
   const navigation = useNavigation<any>();
   return (
     <FlatList
       data={items}
       showsVerticalScrollIndicator={false}
+      showsHorizontalScrollIndicator={false}
+      horizontal={horizontal}
       mb={spaces[4] + 4}
       renderItem={({item}) => {
         const restaurantData = {
@@ -32,7 +40,7 @@ export const RestaurantsList = ({items}: Props) => {
                 restaurant: restaurantData,
               })
             }>
-            <RestaurantsInfoCard restaurant={restaurantData} />
+            {component && component(restaurantData)}
           </TouchableOpacity>
         );
       }}
