@@ -5,15 +5,19 @@ import {SearchBar} from '@components/SearchBar';
 import {useTranslation} from 'react-i18next';
 import {HeartIcon} from '@app/assets/icons';
 import {Pressable} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 
 type Props = {
   setSearchCity: React.Dispatch<React.SetStateAction<string>>;
+  setIsFavoritesOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isFavoritesOpen: boolean;
 };
 
-export const RestaurantSearch = ({setSearchCity}: Props) => {
+export const RestaurantSearch = ({
+  setSearchCity,
+  setIsFavoritesOpen,
+  isFavoritesOpen,
+}: Props) => {
   const {t} = useTranslation();
-  const navigation = useNavigation<any>();
   return (
     <View pb={spaces[3]}>
       <SearchBar
@@ -22,9 +26,14 @@ export const RestaurantSearch = ({setSearchCity}: Props) => {
         icon={
           <Pressable
             onPress={() => {
-              navigation.push('FavouriteRestaurants');
+              setIsFavoritesOpen(prevState => !prevState);
             }}>
-            <HeartIcon width={40} height={20} />
+            <HeartIcon
+              width={40}
+              height={20}
+              bgFill={isFavoritesOpen ? 'red' : 'white'}
+              fill={isFavoritesOpen ? 'red' : 'gray'}
+            />
           </Pressable>
         }
       />

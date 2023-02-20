@@ -1,20 +1,48 @@
-import {FlatList, View} from 'native-base';
-import React from 'react';
+import {FlatList, Text, View, VStack} from 'native-base';
+import React, {useState} from 'react';
 import {CardSkeleton} from '@components/Skeleton';
 import {MakeRequestWrapper} from '@app/containers';
 import {RestaurantCardType} from '@app/types';
 import {spaces} from '@app/theme';
-import {RestaurantSearch, RestaurantsList} from '../components/';
-import {useRestaurant} from '@hooks/';
+import {
+  MiniRestaurantCard,
+  RestaurantSearch,
+  RestaurantsInfoCard,
+  RestaurantsList,
+} from '../components/';
+import {useFavorites, useRestaurant} from '@hooks/';
+import {useTranslation} from 'react-i18next';
 
 // move this to separate file
 const dummyLoadingData = [{id: '1'}, {id: '2'}, {id: '3'}];
 
 export const RestaurantsScreen = () => {
+  const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
   const {setSearchCity, restaurantsData, isLoading, isError} = useRestaurant();
+  const {favorites} = useFavorites();
+  const {t} = useTranslation();
+
   return (
     <View flex={1} padding={spaces[3]}>
-      <RestaurantSearch setSearchCity={setSearchCity} />
+      <RestaurantSearch
+        setSearchCity={setSearchCity}
+        setIsFavoritesOpen={setIsFavoritesOpen}
+        isFavoritesOpen={isFavoritesOpen}
+      />
+      {isFavoritesOpen && (
+        <VStack space={2}>
+          <Text mx={spaces[3]} fontSize="body">
+            {t('favorites')}
+          </Text>
+          <RestaurantsList
+            items={favorites}
+            horizontal={true}
+            component={(data: RestaurantCardType) => {
+              return <MiniRestaurantCard restaurant={data} />;
+            }}
+          />
+        </VStack>
+      )}
       <View>
         <MakeRequestWrapper
           data={restaurantsData?.results}
@@ -31,7 +59,14 @@ export const RestaurantsScreen = () => {
           }}
           isError={isError}
           renderData={(items: (RestaurantCardType & {vicinity: string})[]) => {
-            return <RestaurantsList items={items} />;
+            return (
+              <RestaurantsList
+                items={items}
+                component={(data: RestaurantCardType) => (
+                  <RestaurantsInfoCard restaurant={data} />
+                )}
+              />
+            );
           }}
         />
       </View>
