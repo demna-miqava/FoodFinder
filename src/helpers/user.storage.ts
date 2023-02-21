@@ -38,7 +38,7 @@ class UserStorage {
       UserStorageKeys.REFRESH_TOKEN,
     );
     this._favorites = JSON.parse(
-      (await this._storage.getString(UserStorageKeys.FAVORITES)) || '[]',
+      (await this._storage.getObject(UserStorageKeys.FAVORITES)) || '[]',
     );
     this.processNumberOfVisits();
   }

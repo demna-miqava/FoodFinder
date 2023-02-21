@@ -9,7 +9,7 @@ const favoritesSlice = createSlice({
   },
   reducers: {
     hydrate: (state, action) => {
-      state.favoritePlaces = JSON.parse(action.payload);
+      state.favoritePlaces = action.payload;
     },
     clearFavorites: state => {
       state.favoritePlaces = [];
