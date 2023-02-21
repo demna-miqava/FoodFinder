@@ -1,3 +1,4 @@
+import {userStorage} from '@app/helpers';
 import {RestaurantCardType} from '@app/types';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
@@ -8,7 +9,7 @@ const favoritesSlice = createSlice({
   },
   reducers: {
     hydrate: (state, action) => {
-      state.favoritePlaces = action.payload;
+      state.favoritePlaces = JSON.parse(action.payload);
     },
     clearFavorites: state => {
       state.favoritePlaces = [];
@@ -26,6 +27,7 @@ const favoritesSlice = createSlice({
       } else {
         state.favoritePlaces.push(action.payload);
       }
+      userStorage.setFavorites(state.favoritePlaces);
     },
   },
 });

@@ -1,16 +1,17 @@
 import React from 'react';
-import {useNoWifiToast} from '@hooks/';
+import {useFavorites, useMount, useNoWifiToast} from '@hooks/';
 import {userStorage} from '@helpers/';
 import {TabNavigation} from './TabNavigation';
 
 export const Route = () => {
   useNoWifiToast();
+  const {hydrate} = useFavorites();
 
-  React.useEffect(() => {
-    (async () => {
-      await userStorage.bootstrap();
-    })();
-  }, []);
+  useMount(async () => {
+    await userStorage.bootstrap();
+    const data = userStorage.getFavorites() || [];
+    hydrate(data);
+  });
 
   return <TabNavigation />;
 };

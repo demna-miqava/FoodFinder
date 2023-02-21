@@ -7,6 +7,7 @@ enum UserStorageKeys {
   TOKEN = 'token',
   REFRESH_TOKEN = 'refresh_token',
   IS_LOGGED_IN = 'is_logged_in',
+  FAVORITES = 'favorites',
 }
 
 type stringOrUndefined = string | undefined;
@@ -18,6 +19,7 @@ class UserStorage {
   private _userEmail: stringOrUndefined;
   private _token: stringOrUndefined;
   private _refreshToken: stringOrUndefined;
+  private _favorites: string[] = [];
 
   constructor() {
     this._storage = storage;
@@ -34,6 +36,9 @@ class UserStorage {
     this._token = await this._storage.getString(UserStorageKeys.TOKEN);
     this._refreshToken = await this._storage.getString(
       UserStorageKeys.REFRESH_TOKEN,
+    );
+    this._favorites = JSON.parse(
+      (await this._storage.getString(UserStorageKeys.FAVORITES)) || '[]',
     );
     this.processNumberOfVisits();
   }
@@ -54,7 +59,7 @@ class UserStorage {
     return this._username;
   }
 
-  async setUserName(userName: string): Promise<void> {
+  setUserName(userName: string): void {
     this._storage.set(UserStorageKeys.USER_USERNAME, userName);
     this._username = userName;
   }
@@ -67,7 +72,7 @@ class UserStorage {
     return this._userEmail;
   }
 
-  async setUserEmail(email: string): Promise<void> {
+  setUserEmail(email: string): void {
     this._storage.set(UserStorageKeys.USER_EMAIL, email);
     this._username = email;
   }
@@ -76,7 +81,7 @@ class UserStorage {
     return this._token;
   }
 
-  async setUserToken(token: string): Promise<void> {
+  setUserToken(token: string): void {
     this._storage.set(UserStorageKeys.TOKEN, token);
     this._username = token;
   }
@@ -85,9 +90,22 @@ class UserStorage {
     return this._refreshToken;
   }
 
-  async setRefreshToken(token: string): Promise<void> {
+  setRefreshToken(token: string): void {
     this._storage.set(UserStorageKeys.REFRESH_TOKEN, token);
     this._username = token;
+  }
+
+  getFavorites(): string[] {
+    return this._favorites;
+  }
+
+  async setFavorites(passedFavorites: string[]) {
+    const favorites = JSON.stringify(passedFavorites);
+    await this._storage.set(
+      UserStorageKeys.FAVORITES,
+      JSON.stringify(favorites),
+    );
+    this._favorites = passedFavorites;
   }
 }
 
