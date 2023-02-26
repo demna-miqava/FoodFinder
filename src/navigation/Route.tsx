@@ -1,10 +1,12 @@
 import React from 'react';
-import {useFavorites, useMount, useNoWifiToast} from '@hooks/';
+import {useFavorites, useMount, useNoWifiToast, useUser} from '@hooks/';
 import {userStorage} from '@helpers/';
 import {TabNavigation} from './TabNavigation';
+import {OnboardingStackNavigator} from './stacks';
 
 export const Route = () => {
   useNoWifiToast();
+  const {user} = useUser();
   const {hydrate} = useFavorites();
 
   useMount(async () => {
@@ -13,5 +15,5 @@ export const Route = () => {
     hydrate(data);
   });
 
-  return <TabNavigation />;
+  return <>{user ? <TabNavigation /> : <OnboardingStackNavigator />}</>;
 };
