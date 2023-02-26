@@ -1,11 +1,11 @@
 import React from 'react';
 import {Text} from '@components/Typography';
-import {View} from 'native-base';
+import {OnboardingBackground} from '../components/OnboardingBackground';
 
 export const SignInScreen = () => {
   return (
-    <View>
+    <OnboardingBackground>
       <Text>Sign in</Text>
-    </View>
+    </OnboardingBackground>
   );
 };

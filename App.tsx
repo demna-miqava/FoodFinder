@@ -6,10 +6,9 @@ import {StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {Route} from '@navigations/';
 import {QueryClient, QueryClientProvider} from 'react-query';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import './src/assets/localization/';
 import {Provider} from 'react-redux';
 import {store} from '@app/redux';
+import './src/assets/localization/';
 
 const queryClient = new QueryClient();
 
@@ -25,10 +24,8 @@ const App = () => {
       <QueryClientProvider client={queryClient}>
         <NavigationContainer>
           <NativeBaseProvider theme={theme}>
-            <SafeAreaView style={{flex: 1}} edges={['top']}>
-              <StatusBar backgroundColor="#fff" barStyle="dark-content" />
-              <Route />
-            </SafeAreaView>
+            <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+            <Route />
           </NativeBaseProvider>
         </NavigationContainer>
       </QueryClientProvider>
