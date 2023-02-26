@@ -3,5 +3,13 @@
   "temporarilyClosed": "Closed temporarily",
   "noInternetConnectionTitle": "Oops, you have no internet access",
   "noInternetConnectionMessage": "Please turn wifi or mobile data on to see restaurants nearby",
-  "favorites": "Favorites"
+  "favorites": "Favorites",
+  "sign_up_form_email_required": "Email is required",
+  "sign_up_form_email_invalid": "Ivalid email format",
+  "sign_up_form_first_name_required": "Firstname is required",
+  "sign_up_form_first_name_minimum": "FirstName should be at least 3 characters",
+  "sign_up_form_last_name_required": "Lastname is required",
+  "sign_up_form_last_name_minimum": "Lastname should be at least 3 characters",
+  "sign_up_form_password_required": "Password is required",
+  "sign_up_form_password_invalid": "Password should contain at least 8 characters, at least one letter, one number and one special character"
 }
