@@ -6,12 +6,11 @@ import {userStorage} from '@app/helpers';
 const OnboardingStack = createNativeStackNavigator();
 
 export const OnboardingStackNavigator = () => {
-  const numberOfVisits = userStorage.getNumberOfVisits();
-  userStorage.processNumberOfVisits();
+  const isFirstVisit = userStorage.getNumberOfVisits() === 1;
   return (
     <OnboardingStack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={numberOfVisits ? 'SignIn' : 'Main'}>
+      initialRouteName={isFirstVisit ? 'Main' : 'SignIn'}>
       <OnboardingStack.Screen name="Main" component={MainScreen} />
       <OnboardingStack.Screen name="SignUp" component={SignUpScreen} />
       <OnboardingStack.Screen name="SignIn" component={SignInScreen} />
