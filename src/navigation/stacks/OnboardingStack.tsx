@@ -10,8 +10,8 @@ export const OnboardingStackNavigator = () => {
   return (
     <OnboardingStack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={isFirstVisit ? 'Main' : 'SignIn'}>
-      <OnboardingStack.Screen name="Main" component={MainScreen} />
+      initialRouteName={isFirstVisit ? 'OnboardingScreen' : 'SignIn'}>
+      <OnboardingStack.Screen name="OnboardingScreen" component={MainScreen} />
       <OnboardingStack.Screen name="SignUp" component={SignUpScreen} />
       <OnboardingStack.Screen name="SignIn" component={SignInScreen} />
     </OnboardingStack.Navigator>

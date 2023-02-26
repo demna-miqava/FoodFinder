@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import {useFavorites, useMount, useNoWifiToast, useUser} from '@hooks/';
 import {userStorage} from '@helpers/';
-import {TabNavigation} from './TabNavigation';
-import {OnboardingStackNavigator} from './stacks';
+import {OnboardingStackNavigator, RootStackNavigator} from './stacks';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import RNBootSplash from 'react-native-bootsplash';
 
@@ -30,7 +29,7 @@ export const Route = () => {
     <>
       {user ? (
         <SafeAreaView style={{flex: 1}} edges={['top']}>
-          <TabNavigation />
+          <RootStackNavigator />
         </SafeAreaView>
       ) : (
         <OnboardingStackNavigator />
