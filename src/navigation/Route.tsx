@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useFavorites, useMount, useNoWifiToast, useUser} from '@hooks/';
 import {userStorage} from '@helpers/';
 import {TabNavigation} from './TabNavigation';
 import {OnboardingStackNavigator} from './stacks';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import RNBootSplash from 'react-native-bootsplash';
 
 export const Route = () => {
+  const [bootstrap, setBootstrap] = useState(false);
   useNoWifiToast();
   const {user} = useUser();
   const {hydrate} = useFavorites();
@@ -14,7 +16,15 @@ export const Route = () => {
     await userStorage.bootstrap();
     const data = userStorage.getFavorites() || [];
     hydrate(data);
+    setTimeout(() => {
+      RNBootSplash.hide();
+    }, 10);
+    setBootstrap(true);
   });
+
+  if (!bootstrap) {
+    return null;
+  }
 
   return (
     <>
