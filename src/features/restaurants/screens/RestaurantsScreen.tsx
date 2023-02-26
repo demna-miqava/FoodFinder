@@ -10,8 +10,9 @@ import {
   RestaurantsInfoCard,
   RestaurantsList,
 } from '../components/';
-import {useFavorites, useRestaurant} from '@hooks/';
+import {useFavorites} from '@hooks/';
 import {useTranslation} from 'react-i18next';
+import {useRestaurant} from '../hooks';
 
 // move this to separate file
 const dummyLoadingData = [{id: '1'}, {id: '2'}, {id: '3'}];

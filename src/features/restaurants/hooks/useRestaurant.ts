@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {useGetLocation, useGetRestaurants} from '@api/restaurants';
-import {useDebounce} from './useDebounce';
+import {useDebounce} from '@hooks/';
 
 // use this as default location before getting permission to location
 const defaultLocation = '37.7749295,-122.4194155';
