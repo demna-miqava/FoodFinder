@@ -40,7 +40,6 @@ class UserStorage {
     this._favorites = JSON.parse(
       (await this._storage.getObject(UserStorageKeys.FAVORITES)) || '[]',
     );
-    this.processNumberOfVisits();
   }
 
   getNumberOfVisits(): number {
