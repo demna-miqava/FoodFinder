@@ -3,7 +3,6 @@ import {spaces} from '@app/theme';
 import {FlatList} from 'native-base';
 import {TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {RestaurantsInfoCard} from './RestaurantInfoCard';
 import {RestaurantCardType} from '@app/types';
 
 type Props = {
