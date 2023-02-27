@@ -10,7 +10,7 @@ const passwordRegex =
   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"/;
 
 export const useSignUpValidation = () => {
-  const getSignUpSchema = () => {
+  const getSignUpSchema = () =>
     Yup.object().shape({
       firstName: Yup.string()
         .required(FirstNameInputFieldError.REQUIRED)
@@ -25,7 +25,6 @@ export const useSignUpValidation = () => {
         .required(PasswordInputFieldError.REQUIRED)
         .matches(passwordRegex, PasswordInputFieldError.INVALID),
     });
-  };
 
   return {getSignUpSchema};
 };
