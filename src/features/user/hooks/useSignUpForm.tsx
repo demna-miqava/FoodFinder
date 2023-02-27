@@ -8,6 +8,7 @@ export const useSignUpForm = () => {
     control,
     handleSubmit,
     formState: {errors, isValid, isSubmitting},
+    watch,
   } = useForm({
     resolver: yupResolver(getSignUpSchema()),
     mode: 'onBlur',
@@ -26,5 +27,6 @@ export const useSignUpForm = () => {
     errors,
     isValid,
     isSubmitting,
+    values: watch(),
   };
 };
