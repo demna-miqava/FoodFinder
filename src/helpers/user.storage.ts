@@ -8,6 +8,7 @@ enum UserStorageKeys {
   REFRESH_TOKEN = 'refresh_token',
   IS_LOGGED_IN = 'is_logged_in',
   FAVORITES = 'favorites',
+  HAS_LOGGED_IN = 'has logged in',
 }
 
 type stringOrUndefined = string | undefined;
@@ -20,6 +21,7 @@ class UserStorage {
   private _token: stringOrUndefined;
   private _refreshToken: stringOrUndefined;
   private _favorites: string[] = [];
+  private _hasLoggedIn: boolean = false;
 
   constructor() {
     this._storage = storage;
@@ -40,6 +42,8 @@ class UserStorage {
     this._favorites = JSON.parse(
       (await this._storage.getObject(UserStorageKeys.FAVORITES)) || '[]',
     );
+    this._hasLoggedIn =
+      (await this._storage.getBoolean(UserStorageKeys.HAS_LOGGED_IN)) || false;
     this.processNumberOfVisits();
   }
 
@@ -97,6 +101,14 @@ class UserStorage {
 
   getFavorites(): string[] {
     return this._favorites;
+  }
+
+  setHasLoggedIn(): void {
+    this._hasLoggedIn = true;
+  }
+
+  getHasLoggedIn(): boolean {
+    return this._hasLoggedIn;
   }
 
   async setFavorites(passedFavorites: string[]) {
