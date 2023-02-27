@@ -1,6 +1,7 @@
 import {useForm} from 'react-hook-form';
 import {useSignUpValidation} from './useSignUpValidation';
 import {yupResolver} from '@hookform/resolvers/yup';
+import {User} from '@app/types';
 
 export const useSignUpForm = () => {
   const {getSignUpSchema} = useSignUpValidation();
@@ -9,7 +10,7 @@ export const useSignUpForm = () => {
     handleSubmit,
     formState: {errors, isValid, isSubmitting},
     watch,
-  } = useForm({
+  } = useForm<User>({
     resolver: yupResolver(getSignUpSchema()),
     mode: 'onBlur',
     reValidateMode: 'onBlur',
