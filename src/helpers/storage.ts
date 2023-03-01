@@ -1,6 +1,7 @@
 import AsyncStorage, {
   AsyncStorageStatic,
 } from '@react-native-async-storage/async-storage';
+import {decrypt, encrypt} from './encrypt';
 
 class Storage {
   private _storage: StorageType = AsyncStorage;
@@ -21,9 +22,9 @@ class Storage {
       typeof value === 'number' ||
       typeof value === 'boolean'
     ) {
-      await this._storage.setItem(key, value.toString());
+      await this._storage.setItem(key, encrypt(value.toString()));
     } else if (typeof value === 'object') {
-      await this._storage.setItem(key, JSON.stringify(value));
+      await this._storage.setItem(key, encrypt(JSON.stringify(value)));
     } else {
       throw new Error(
         'invalid key type: key must be either type of string, number, boolean or object',
@@ -36,7 +37,7 @@ class Storage {
     if (!value) {
       return;
     }
-    return value;
+    return decrypt(value, 'string');
   }
 
   public async getNumber(key: string): Promise<number> {
@@ -44,7 +45,7 @@ class Storage {
     if (!value) {
       return 0;
     }
-    return Number(value);
+    return Number(decrypt(value));
   }
 
   public async getObject(key: string): Promise<any> {
@@ -52,7 +53,7 @@ class Storage {
     if (!value) {
       return;
     }
-    return JSON.parse(value);
+    return decrypt(value);
   }
 
   public async getBoolean(key: string): Promise<boolean | undefined> {
@@ -60,7 +61,7 @@ class Storage {
     if (!value) {
       return;
     }
-    return Boolean(value);
+    return Boolean(decrypt(value));
   }
 }
 
