@@ -4,7 +4,7 @@ import {
   FirstNameInputFieldError,
   LastNameInputFieldError,
   PasswordInputFieldError,
-} from '../types';
+} from '../../types';
 
 const passwordRegex =
   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;

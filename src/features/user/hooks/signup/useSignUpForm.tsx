@@ -3,7 +3,7 @@ import {useSignUpValidation} from './useSignUpValidation';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {User} from '@app/types';
 import {useSignUpReq} from '@app/api';
-import {SignUpReqPayload} from '../types';
+import {SignUpReqPayload} from '../../types';
 import {userStorage} from '@helpers/';
 import {useUser} from '@hooks/';
 
