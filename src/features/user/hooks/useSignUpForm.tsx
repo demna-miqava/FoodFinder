@@ -12,8 +12,7 @@ export const useSignUpForm = () => {
     watch,
   } = useForm<User>({
     resolver: yupResolver(getSignUpSchema()),
-    mode: 'onBlur',
-    reValidateMode: 'onBlur',
+    mode: 'onChange',
     defaultValues: {
       firstName: '',
       lastName: '',
