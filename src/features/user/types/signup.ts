@@ -17,3 +17,10 @@ export enum PasswordInputFieldError {
   REQUIRED = 'sign_up_form_password_required',
   INVALID = 'sign_up_form_password_invalid',
 }
+
+export interface SignUpPayload {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+}
