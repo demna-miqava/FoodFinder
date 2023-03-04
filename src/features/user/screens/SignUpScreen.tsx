@@ -34,7 +34,7 @@ export const SignUpScreen = () => {
         <CustomInput
           name="password"
           label={t('sign_up_form_password')}
-          type="text"
+          type="password"
           control={control}
           errors={errors}
         />
