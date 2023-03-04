@@ -18,7 +18,7 @@ export enum PasswordInputFieldError {
   INVALID = 'sign_up_form_password_invalid',
 }
 
-export interface SignUpPayload {
+export interface SignUpReqPayload {
   firstName: string;
   lastName: string;
   email: string;
