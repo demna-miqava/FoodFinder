@@ -11,5 +11,7 @@
   "sign_up_form_last_name_required": "გვარის შეყვანა სავალდებულოა",
   "sign_up_form_last_name_minimum": "გვარი უნდა შეიცავდეს მინიმუმ სამ ასოს",
   "sign_up_form_password_required": "პაროლის შეყვანა სავალდებულოა",
-  "sign_up_form_password_invalid": "პაროლი უნდა შეიცავდეს მინიმუმ 8 ასოს, ერთ ასოს, ერთ რიცხვს და ერთ სპეციალურ სიმბოლოს"
+  "sign_up_form_password_invalid": "პაროლი უნდა შეიცავდეს მინიმუმ 8 ასოს, ერთ ასოს, ერთ პატარა ასოს, ერთ რიცხვს და ერთ სპეციალურ სიმბოლოს",
+  "sign_up_form_btn_text": "რეგისტრაცია",
+  "sign_up_btn_loading": "მოთხოვნა მუშავდება..."
 }
