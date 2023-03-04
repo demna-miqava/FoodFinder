@@ -15,36 +15,36 @@ export const SignUpScreen = () => {
       <View w="100%" px={spaces[4]}>
         <CustomInput
           name="firstName"
-          label={t('sign_up_form_first_name')}
+          label={t('auth_form_first_name')}
           control={control}
           errors={errors}
         />
         <CustomInput
           name="lastName"
-          label={t('sign_up_form_last_name')}
+          label={t('auth_form_last_name')}
           control={control}
           errors={errors}
         />
         <CustomInput
           name="email"
-          label={t('sign_up_form_email')}
+          label={t('auth_form_email')}
           control={control}
           errors={errors}
         />
         <CustomInput
           name="password"
-          label={t('sign_up_form_password')}
+          label={t('auth_form_password')}
           type="password"
           control={control}
           errors={errors}
         />
         <Button
-          text={t('sign_up_form_btn_text')}
+          text={t('auth_form_btn_text')}
           onPress={onSubmit}
           styles={btnStyles}
           disabled={!isValid}
           isLoading={isLoading}
-          isLoadingText={t('sign_up_btn_loading') || ''}
+          isLoadingText={t('auth_btn_loading') || ''}
         />
       </View>
     </OnboardingBackground>
