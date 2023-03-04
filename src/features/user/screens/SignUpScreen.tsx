@@ -4,17 +4,12 @@ import {View} from 'native-base';
 import {useSignUpForm} from '../hooks';
 import {CustomInput} from '../components/CustomInput';
 import {spaces} from '@app/theme';
-import {User} from '@app/types';
 import {Button} from '@components/Button';
 import {useTranslation} from 'react-i18next';
 
 export const SignUpScreen = () => {
   const {t} = useTranslation();
-  const {control, handleSubmit, errors, isValid} = useSignUpForm();
-  const onSubmit = (data: User) => {
-    console.log('data', data);
-  };
-
+  const {control, errors, isValid, isLoading, onSubmit} = useSignUpForm();
   return (
     <OnboardingBackground>
       <View w="100%" px={spaces[4]}>
@@ -45,10 +40,10 @@ export const SignUpScreen = () => {
         />
         <Button
           text={t('sign_up_form_btn_text')}
-          onPress={handleSubmit(onSubmit)}
+          onPress={onSubmit}
           styles={btnStyles}
           disabled={!isValid}
-          isLoading={false}
+          isLoading={isLoading}
           isLoadingText={t('sign_up_btn_loading') || ''}
         />
       </View>
