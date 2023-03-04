@@ -10,7 +10,7 @@ import {store} from '@app/redux';
 import './src/assets/localization/';
 
 const queryClient = new QueryClient();
-
+// https://tkdodo.eu/blog/mastering-mutations-in-react-query
 const App = () => {
   return (
     <Provider store={store}>
