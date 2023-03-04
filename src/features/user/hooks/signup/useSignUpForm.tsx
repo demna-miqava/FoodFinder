@@ -3,7 +3,7 @@ import {useSignUpValidation} from './useSignUpValidation';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {User} from '@app/types';
 import {useSignUpReq} from '@app/api';
-import {SignUpReqPayload} from '../../types';
+import {SignUpFormValues} from '../../types';
 import {userStorage} from '@helpers/';
 import {useUser} from '@hooks/';
 
@@ -23,7 +23,7 @@ export const useSignUpForm = () => {
     handleSubmit,
     formState: {errors, isValid, isSubmitting},
     watch,
-  } = useForm<SignUpReqPayload>({
+  } = useForm<SignUpFormValues>({
     resolver: yupResolver(getSignUpSchema()),
     mode: 'onChange',
     defaultValues: {
@@ -34,7 +34,7 @@ export const useSignUpForm = () => {
     },
   });
 
-  const onSubmit = async (payload: SignUpReqPayload) => {
+  const onSubmit = async (payload: SignUpFormValues) => {
     try {
       // FIX: ts issue
       const {message, token, refreshToken, user}: any = await mutateAsync(
