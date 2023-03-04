@@ -42,6 +42,7 @@ export const useSignUpForm = () => {
       );
       userStorage.setUserToken(token);
       userStorage.setRefreshToken(refreshToken);
+      userStorage.setHasLoggedIn();
       authenticateUser(user);
       // show success toast message
       reset();
