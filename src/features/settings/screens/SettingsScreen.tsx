@@ -1,12 +1,11 @@
 import React, {useMemo} from 'react';
-import {Avatar, View, VStack} from 'native-base';
-import {SettingsList} from '../components/';
+import {View} from 'native-base';
+import {Avatar, SettingsList} from '../components/';
 import {HeartIcon, LogoutIcon} from '@app/assets/icons';
 import {spaces} from '@app/theme';
 import {SpacerComponent} from '@components/Spacer';
-import {Text} from '@components/Typography';
 import {useUser} from '@hooks/';
-import {getUserInitials, userStorage} from '@app/helpers';
+import {userStorage} from '@app/helpers';
 import {User} from '@app/types';
 
 export const SettingsScreen = () => {
@@ -36,19 +35,7 @@ export const SettingsScreen = () => {
 
   return (
     <View flex={1} px={spaces[3]} py={spaces[1]}>
-      <VStack space={2} alignSelf="center">
-        <Avatar
-          alignSelf="center"
-          w="120"
-          h="120"
-          bgColor="brand.primary"
-          _text={{
-            fontSize: 'body',
-          }}>
-          {getUserInitials(firstName, lastName)}
-        </Avatar>
-        <Text>{email}</Text>
-      </VStack>
+      <Avatar firstName={firstName} lastName={lastName} email={email} />
       <SpacerComponent height="40px" />
       <SettingsList items={settingsListItems} />
     </View>
