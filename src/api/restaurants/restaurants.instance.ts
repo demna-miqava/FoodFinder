@@ -1,8 +1,9 @@
+import {GOOGLE_API_BASE_URL} from '@app/helpers';
 import Axios, {AxiosRequestConfig} from 'axios';
 import {customInstanceFactory} from '../api.factory';
 
 export const restaurantsAxiosInstance = Axios.create({
-  baseURL: 'some base url saved in .env',
+  baseURL: GOOGLE_API_BASE_URL,
   headers: {},
 });
 
