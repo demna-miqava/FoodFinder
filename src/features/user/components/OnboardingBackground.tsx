@@ -1,8 +1,10 @@
 import React from 'react';
-import {ImageBackground, StyleSheet, View} from 'react-native';
+import {spaces} from '@app/theme';
+import {View} from 'native-base';
+import {ImageBackground, StyleSheet} from 'react-native';
 
 interface Props {
-  children: React.ReactElement;
+  children: React.ReactElement[];
 }
 
 const imageSrc = require('../../../assets/images/home_bg.jpg');
@@ -14,7 +16,9 @@ export const OnboardingBackground = ({children}: Props) => {
       resizeMode="cover"
       style={styles.container}>
       <View style={styles.overlay} />
-      {children}
+      <View w="100%" px={spaces[4]}>
+        {children}
+      </View>
     </ImageBackground>
   );
 };
