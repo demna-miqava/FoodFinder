@@ -1,14 +1,14 @@
+import {User} from '@app/types';
 import {storage} from './storage';
 
 enum UserStorageKeys {
   NUMBER_OF_VISITS = 'number_of_visits',
-  USER_USERNAME = 'user_username',
-  USER_EMAIL = 'user_email',
   TOKEN = 'token',
   REFRESH_TOKEN = 'refresh_token',
   IS_LOGGED_IN = 'is_logged_in',
   FAVORITES = 'favorites',
   HAS_LOGGED_IN = 'has logged in',
+  USER_INFO = 'user_info',
 }
 
 type stringOrUndefined = string | undefined;
@@ -16,10 +16,9 @@ type stringOrUndefined = string | undefined;
 class UserStorage {
   private _storage;
   private _numberOfVisits: number = 0;
-  private _username: stringOrUndefined;
-  private _userEmail: stringOrUndefined;
   private _token: stringOrUndefined;
   private _refreshToken: stringOrUndefined;
+  private _userInfo: User | null = null;
   private _favorites: string[] = [];
   private _hasLoggedIn: boolean = false;
 
@@ -31,14 +30,11 @@ class UserStorage {
     this._numberOfVisits = await this._storage.getNumber(
       UserStorageKeys.NUMBER_OF_VISITS,
     );
-    this._username = await this._storage.getString(
-      UserStorageKeys.USER_USERNAME,
-    );
-    this._userEmail = await this._storage.getString(UserStorageKeys.USER_EMAIL);
     this._token = await this._storage.getString(UserStorageKeys.TOKEN);
     this._refreshToken = await this._storage.getString(
       UserStorageKeys.REFRESH_TOKEN,
     );
+    this._userInfo = await this._storage.getObject(UserStorageKeys.USER_INFO);
     this._favorites = JSON.parse(
       (await this._storage.getObject(UserStorageKeys.FAVORITES)) || '[]',
     );
@@ -59,26 +55,17 @@ class UserStorage {
     }
   }
 
-  getUserName(): string | undefined {
-    return this._username;
+  getUserInfo(): User | null {
+    return this._userInfo;
   }
 
-  setUserName(userName: string): void {
-    this._storage.set(UserStorageKeys.USER_USERNAME, userName);
-    this._username = userName;
+  setUserInfo(userInfo: User | null): void {
+    this._userInfo = userInfo;
+    this._storage.set(UserStorageKeys.USER_INFO, JSON.stringify(userInfo));
   }
 
   getIsLoggedIn() {
     return this.getUserToken();
-  }
-
-  getUserEmail(): string | undefined {
-    return this._userEmail;
-  }
-
-  setUserEmail(email: string): void {
-    this._storage.set(UserStorageKeys.USER_EMAIL, email);
-    this._username = email;
   }
 
   getUserToken(): string | undefined {
@@ -87,7 +74,6 @@ class UserStorage {
 
   setUserToken(token: string): void {
     this._storage.set(UserStorageKeys.TOKEN, token);
-    this._username = token;
   }
 
   getRefreshToken(): string | undefined {
@@ -96,7 +82,6 @@ class UserStorage {
 
   setRefreshToken(token: string): void {
     this._storage.set(UserStorageKeys.REFRESH_TOKEN, token);
-    this._username = token;
   }
 
   getFavorites(): string[] {
