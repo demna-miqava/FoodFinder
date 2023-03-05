@@ -7,7 +7,7 @@ import {OnboardingCard} from '../components';
 import {spaces} from '@app/theme';
 import Lottie from 'lottie-react-native';
 
-export const MainScreen = () => {
+export const OnboardingScreen = () => {
   const {t} = useTranslation();
   return (
     <OnboardingBackground>

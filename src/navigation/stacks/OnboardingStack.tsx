@@ -1,6 +1,10 @@
 import React, {useMemo} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {MainScreen, SignInScreen, SignUpScreen} from '@features/auth/screens';
+import {
+  OnboardingScreen,
+  SignInScreen,
+  SignUpScreen,
+} from '@features/auth/screens';
 import {userStorage} from '@app/helpers';
 
 const OnboardingStack = createNativeStackNavigator();
@@ -22,7 +26,10 @@ export const OnboardingStackNavigator = () => {
     <OnboardingStack.Navigator
       screenOptions={{headerShown: false}}
       initialRouteName={initialRouteName}>
-      <OnboardingStack.Screen name="OnboardingScreen" component={MainScreen} />
+      <OnboardingStack.Screen
+        name="OnboardingScreen"
+        component={OnboardingScreen}
+      />
       <OnboardingStack.Screen name="SignUp" component={SignUpScreen} />
       <OnboardingStack.Screen name="SignIn" component={SignInScreen} />
     </OnboardingStack.Navigator>
