@@ -21,5 +21,7 @@
   "auth_form_password": "Password",
   "dont_have_an_account": "Don't have an account?",
   "already_have_an_account": "Already have an account?",
-  "introduction_text": "Welcome to FoodFinder! We help you to find your favorite places easily"
+  "introduction_text": "Welcome to FoodFinder! We help you to find your favorite places easily",
+  "logout": "Logout",
+  "view_your_favorites": "View your favorites"
 }
