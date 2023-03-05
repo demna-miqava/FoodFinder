@@ -105,6 +105,7 @@ class UserStorage {
 
   setHasLoggedIn(): void {
     this._hasLoggedIn = true;
+    this._storage.set(UserStorageKeys.HAS_LOGGED_IN, true);
   }
 
   getHasLoggedIn(): boolean {
