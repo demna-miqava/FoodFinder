@@ -4,6 +4,7 @@ import {FlatList} from 'native-base';
 import {TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {RestaurantCardType} from '@app/types';
+import {FadeInView} from '@app/components/animations';
 
 type Props = {
   items: (RestaurantCardType & {vicinity: string})[];
@@ -39,7 +40,7 @@ export const RestaurantsList = ({
                 restaurant: restaurantData,
               })
             }>
-            {component && component(restaurantData)}
+            <FadeInView>{component && component(restaurantData)}</FadeInView>
           </TouchableOpacity>
         );
       }}
