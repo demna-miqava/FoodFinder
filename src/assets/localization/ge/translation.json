@@ -13,6 +13,7 @@
   "auth_form_password_required": "პაროლის შეყვანა სავალდებულოა",
   "auth_form_password_invalid": "პაროლი უნდა შეიცავდეს მინიმუმ 8 ასოს, ერთ ასოს, ერთ პატარა ასოს, ერთ რიცხვს და ერთ სპეციალურ სიმბოლოს",
   "auth_form_btn_text": "რეგისტრაცია",
+  "auth_form_sign_in_btn_text": "შესვლა",
   "auth_btn_loading": "მოთხოვნა მუშავდება...",
   "auth_form_first_name": "სახელი",
   "auth_form_last_name": "გვარი",

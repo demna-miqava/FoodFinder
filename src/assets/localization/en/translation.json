@@ -13,6 +13,7 @@
   "auth_form_password_required": "Password is required",
   "auth_form_password_invalid": "Password should contain at least 8 characters, at least one letter, one number and one special character",
   "auth_form_btn_text": "Sign up",
+  "auth_form_sign_in_btn_text": "Sign in",
   "auth_btn_loading": "Submitting...",
   "auth_form_first_name": "First name",
   "auth_form_last_name": "Last name",
