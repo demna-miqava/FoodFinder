@@ -35,9 +35,7 @@ class UserStorage {
       UserStorageKeys.REFRESH_TOKEN,
     );
     this._userInfo = await this._storage.getObject(UserStorageKeys.USER_INFO);
-    this._favorites = JSON.parse(
-      (await this._storage.getObject(UserStorageKeys.FAVORITES)) || '[]',
-    );
+    this._favorites = await this._storage.getObject(UserStorageKeys.FAVORITES);
     this._hasLoggedIn =
       (await this._storage.getBoolean(UserStorageKeys.HAS_LOGGED_IN)) || false;
     this.processNumberOfVisits();
@@ -61,7 +59,7 @@ class UserStorage {
 
   setUserInfo(userInfo: User | null): void {
     this._userInfo = userInfo;
-    this._storage.set(UserStorageKeys.USER_INFO, JSON.stringify(userInfo));
+    this._storage.set(UserStorageKeys.USER_INFO, userInfo);
   }
 
   getIsLoggedIn() {
@@ -98,11 +96,7 @@ class UserStorage {
   }
 
   async setFavorites(passedFavorites: string[]) {
-    const favorites = JSON.stringify(passedFavorites);
-    await this._storage.set(
-      UserStorageKeys.FAVORITES,
-      JSON.stringify(favorites),
-    );
+    await this._storage.set(UserStorageKeys.FAVORITES, passedFavorites);
     this._favorites = passedFavorites;
   }
 }
