@@ -4,7 +4,7 @@ import {View} from 'native-base';
 import {ImageBackground, StyleSheet} from 'react-native';
 
 interface Props {
-  children: React.ReactElement[];
+  children: React.ReactElement | React.ReactElement[];
 }
 
 const imageSrc = require('../../../assets/images/home_bg.jpg');
@@ -33,6 +33,6 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     height: '100%',
-    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
   },
 });
