@@ -10,6 +10,10 @@ class Storage {
     this._storage.clear();
   }
 
+  public async clearMultiple(keysToRemove: string[]) {
+    this._storage.multiRemove(keysToRemove);
+  }
+
   public async clearAllBut(keysToKeep: string[]) {
     const allKeys = await this._storage.getAllKeys();
     const keysToRemove = allKeys.filter(key => !keysToKeep.includes(key));
