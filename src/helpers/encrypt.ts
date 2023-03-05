@@ -14,7 +14,6 @@ export const decrypt = (value: string, type?: string | undefined) => {
   try {
     const bytes = CryptoJS.AES.decrypt(value, String(encryptionKey));
     const unencryptData = bytes.toString(CryptoJS.enc.Utf8);
-    console.log('unencrypt data', unencryptData);
     return type === 'string' ? unencryptData : JSON.parse(unencryptData);
   } catch (e) {
     console.log('error===>', e);
