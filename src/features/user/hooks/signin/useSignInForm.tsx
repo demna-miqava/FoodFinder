@@ -33,6 +33,7 @@ export const useSignInForm = () => {
       reset();
       userStorage.setUserToken(token);
       userStorage.setRefreshToken(refreshToken);
+      userStorage.setHasLoggedIn(true);
       authenticateUser(user);
       // show success toast message
     } catch (error) {
