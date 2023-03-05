@@ -41,6 +41,14 @@ class UserStorage {
     this.processNumberOfVisits();
   }
 
+  clearAll(): void {
+    storage.clearAll();
+  }
+
+  clearAllBut(keysToKeep: string[]): void {
+    storage.clearAllBut(keysToKeep);
+  }
+
   getNumberOfVisits(): number {
     return this._numberOfVisits;
   }
