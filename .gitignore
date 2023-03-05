@@ -33,7 +33,7 @@ local.properties
 .cxx/
 
 # env
-.env.js
+.env
 
 # node.js
 #
