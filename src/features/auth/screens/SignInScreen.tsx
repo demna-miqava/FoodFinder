@@ -1,6 +1,6 @@
 import React from 'react';
 import {OnboardingBackground} from '../components/OnboardingBackground';
-import {useSignInForm} from '../hooks/signin';
+import {useSignInForm} from '../hooks';
 import {useTranslation} from 'react-i18next';
 import {CustomInput} from '../components/CustomInput';
 import {AuthButton, AuthLink} from '../components';
