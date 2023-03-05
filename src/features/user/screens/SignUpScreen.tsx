@@ -1,7 +1,6 @@
 import React from 'react';
-import {OnboardingBackground, CustomInput} from '../components';
+import {OnboardingBackground, CustomInput, AuthButton} from '../components';
 import {useSignUpForm} from '../hooks';
-import {Button} from '@components/Button';
 import {useTranslation} from 'react-i18next';
 
 export const SignUpScreen = () => {
@@ -34,23 +33,13 @@ export const SignUpScreen = () => {
         control={control}
         errors={errors}
       />
-      <Button
+      <AuthButton
         text={t('auth_form_btn_text')}
         onPress={onSubmit}
-        styles={btnStyles}
         disabled={!isValid}
         isLoading={isLoading}
         isLoadingText={t('auth_btn_loading') || ''}
       />
     </OnboardingBackground>
   );
-};
-
-const btnStyles = {
-  alignSelf: 'center',
-  px: 25,
-  py: 1,
-  backgroundColor: '#000',
-  borderRadius: 10,
-  mt: 10,
 };
