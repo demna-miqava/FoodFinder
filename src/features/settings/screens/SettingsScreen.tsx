@@ -1,8 +1,9 @@
 import React from 'react';
-import {View} from 'native-base';
+import {Avatar, View} from 'native-base';
 import {SettingsList} from '../components/';
 import {HeartIcon, LogoutIcon} from '@app/assets/icons';
 import {spaces} from '@app/theme';
+import {SpacerComponent} from '@components/Spacer';
 
 const SettingsListItems = [
   {
@@ -18,7 +19,11 @@ const SettingsListItems = [
 
 export const SettingsScreen = () => {
   return (
-    <View flex={1} px={spaces[3]} py={2}>
+    <View flex={1} px={spaces[3]} py={spaces[1]}>
+      <Avatar alignSelf="center" w="120" h="120" bgColor="brand.primary">
+        DM
+      </Avatar>
+      <SpacerComponent height="40px" />
       <SettingsList items={SettingsListItems} />
     </View>
   );
