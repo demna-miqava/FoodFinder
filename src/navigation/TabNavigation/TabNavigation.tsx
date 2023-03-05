@@ -3,10 +3,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useTheme} from 'native-base';
 import {isPlatform} from '@helpers/';
 import {Platform} from '@constants/';
-import {RestaurantsStack} from '../stacks';
+import {RestaurantsStack, SettingsStackNavigator} from '../stacks';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {MapScreen} from '@features/map/screens';
-import {SettingsScreen} from '@features/settings/screens';
 
 const Tab = createBottomTabNavigator();
 
@@ -48,7 +47,7 @@ export const TabNavigation = () => {
       />
       <Tab.Screen
         name="Settings"
-        component={SettingsScreen}
+        component={SettingsStackNavigator}
         options={{headerShown: false}}
       />
     </Tab.Navigator>
