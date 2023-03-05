@@ -1,6 +1,6 @@
 import {useMutation} from 'react-query';
 import {customAuthInstance} from './auth.instance';
-import {SignInFormValues, SignUpFormValues} from '@features/user/types';
+import {SignInFormValues, SignUpFormValues} from '@app/features/auth/types';
 
 export const signUpReq = (payload: SignUpFormValues) => {
   return customAuthInstance({

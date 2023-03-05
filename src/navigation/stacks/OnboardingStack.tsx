@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {MainScreen, SignInScreen, SignUpScreen} from '@features/user/screens';
+import {MainScreen, SignInScreen, SignUpScreen} from '@features/auth/screens';
 import {userStorage} from '@app/helpers';
 
 const OnboardingStack = createNativeStackNavigator();
