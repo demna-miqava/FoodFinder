@@ -24,7 +24,7 @@ export const SignInScreen = () => {
         type="password"
       />
       <AuthButton
-        text={t('auth_form_sign_in_btn_text')}
+        text={t('sign_in')}
         disabled={!isValid}
         onPress={onSubmit}
         isLoading={isLoading}
@@ -33,7 +33,7 @@ export const SignInScreen = () => {
 
       <AuthLink
         text={t('dont_have_an_account')}
-        navigateText={t('auth_form_sign_in_btn_text')}
+        navigateText={t('sign_in')}
         navigateTo="SignUp"
       />
     </OnboardingBackground>
