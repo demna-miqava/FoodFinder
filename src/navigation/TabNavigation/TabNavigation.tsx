@@ -1,19 +1,12 @@
 import React, {useMemo} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Text, useTheme, View} from 'native-base';
+import {useTheme} from 'native-base';
 import {isPlatform} from '@helpers/';
 import {Platform} from '@constants/';
 import {RestaurantsStack} from '../stacks';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {MapScreen} from '@features/map/screens';
-
-function SettingsScreen() {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
+import {SettingsScreen} from '@features/settings/screens';
 
 const Tab = createBottomTabNavigator();
 
