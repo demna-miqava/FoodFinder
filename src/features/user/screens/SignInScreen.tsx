@@ -21,6 +21,7 @@ export const SignInScreen = () => {
         label={t('auth_form_password')}
         control={control}
         errors={errors}
+        type="password"
       />
       <AuthButton
         text={t('auth_form_sign_in_btn_text')}
