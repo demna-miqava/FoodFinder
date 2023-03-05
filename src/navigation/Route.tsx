@@ -8,13 +8,15 @@ import RNBootSplash from 'react-native-bootsplash';
 export const Route = () => {
   const [bootstrap, setBootstrap] = useState(false);
   useNoWifiToast();
-  const {user} = useUser();
+  const {user, authenticateUser} = useUser();
   const {hydrate} = useFavorites();
 
   useMount(async () => {
     await userStorage.bootstrap();
     const data = userStorage.getFavorites() || [];
+    const userInfo = userStorage.getUserInfo() || null;
     hydrate(data);
+    authenticateUser(userInfo);
     setTimeout(() => {
       RNBootSplash.hide();
     }, 10);

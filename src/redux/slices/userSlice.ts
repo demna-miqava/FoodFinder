@@ -1,3 +1,4 @@
+import {userStorage} from '@app/helpers';
 import {User} from '@app/types/';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
@@ -12,8 +13,9 @@ const userSlice = createSlice({
     logoutUser: state => {
       state.userInfo = null;
     },
-    authenticate: (state, action: PayloadAction<User>) => {
+    authenticate: (state, action: PayloadAction<User | null>) => {
       state.userInfo = action.payload;
+      userStorage.setUserInfo(action.payload);
     },
   },
 });

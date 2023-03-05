@@ -16,7 +16,7 @@ export const useUser = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const authenticateUser = useCallback((userInfo: User) => {
+  const authenticateUser = useCallback((userInfo: User | null) => {
     dispatch(authenticate(userInfo));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
