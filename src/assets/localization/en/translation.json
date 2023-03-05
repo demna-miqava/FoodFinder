@@ -18,5 +18,7 @@
   "auth_form_first_name": "First name",
   "auth_form_last_name": "Last name",
   "auth_form_email": "Email",
-  "auth_form_password": "Password"
+  "auth_form_password": "Password",
+  "dont_have_an_account": "Don't have an account?",
+  "already_have_an_account": "Already have an account?"
 }

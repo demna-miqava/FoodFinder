@@ -18,5 +18,7 @@
   "auth_form_first_name": "სახელი",
   "auth_form_last_name": "გვარი",
   "auth_form_email": "ელ. მისამართი",
-  "auth_form_password": "პაროლი"
+  "auth_form_password": "პაროლი",
+  "dont_have_an_account": "არ გაქვთ ანგარიში?",
+  "already_have_an_account": "უკვე გაქვთ ანგარიში?"
 }

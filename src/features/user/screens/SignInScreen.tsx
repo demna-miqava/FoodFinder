@@ -3,7 +3,7 @@ import {OnboardingBackground} from '../components/OnboardingBackground';
 import {useSignInForm} from '../hooks/signin';
 import {useTranslation} from 'react-i18next';
 import {CustomInput} from '../components/CustomInput';
-import {AuthButton} from '../components';
+import {AuthButton, AuthLink} from '../components';
 
 export const SignInScreen = () => {
   const {t} = useTranslation();
@@ -29,6 +29,12 @@ export const SignInScreen = () => {
         onPress={onSubmit}
         isLoading={isLoading}
         isLoadingText={t('auth_btn_loading') || ''}
+      />
+
+      <AuthLink
+        text={t('dont_have_an_account')}
+        navigateText={t('auth_form_sign_in_btn_text')}
+        navigateTo="SignUp"
       />
     </OnboardingBackground>
   );
