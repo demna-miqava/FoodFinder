@@ -33,7 +33,7 @@ export const SignInScreen = () => {
 
       <AuthLink
         text={t('dont_have_an_account')}
-        navigateText={t('sign_in')}
+        navigateText={t('sign_up')}
         navigateTo="SignUp"
       />
     </OnboardingBackground>
