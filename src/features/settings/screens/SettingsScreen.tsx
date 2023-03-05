@@ -7,10 +7,12 @@ import {SpacerComponent} from '@components/Spacer';
 import {useUser} from '@hooks/';
 import {userStorage} from '@app/helpers';
 import {User} from '@app/types';
+import {useNavigation} from '@react-navigation/native';
 
 export const SettingsScreen = () => {
   const {user, logout} = useUser();
   const {firstName, lastName, email} = user as User;
+  const navigation = useNavigation<any>();
 
   const settingsListItems = useMemo(
     () => [
@@ -18,7 +20,9 @@ export const SettingsScreen = () => {
         text: 'favorites',
         icon: <HeartIcon fill="red" bgFill="red" />,
         secondaryText: 'view_your_favorites',
-        onPress: () => {},
+        onPress: () => {
+          navigation.navigate('Favorites');
+        },
       },
       {
         text: 'logout',
