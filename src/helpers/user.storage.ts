@@ -103,6 +103,14 @@ class UserStorage {
     return this._hasLoggedIn;
   }
 
+  logout(): void {
+    this._storage.clearMultiple([
+      UserStorageKeys.TOKEN,
+      UserStorageKeys.REFRESH_TOKEN,
+      UserStorageKeys.USER_INFO,
+    ]);
+  }
+
   async setFavorites(passedFavorites: string[]) {
     await this._storage.set(UserStorageKeys.FAVORITES, passedFavorites);
     this._favorites = passedFavorites;
