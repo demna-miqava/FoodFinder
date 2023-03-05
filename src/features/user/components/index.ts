@@ -1,2 +1,3 @@
 export {CustomInput} from './CustomInput';
 export {OnboardingBackground} from './OnboardingBackground';
+export {AuthButton} from './AuthButton';
