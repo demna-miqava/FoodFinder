@@ -23,5 +23,7 @@
   "already_have_an_account": "Already have an account?",
   "introduction_text": "Welcome to FoodFinder! We help you to find your favorite places easily",
   "logout": "Logout",
-  "view_your_favorites": "View your favorites"
+  "view_your_favorites": "View your favorites",
+  "added_to_favorites_successfully": "Added to favorites successfully",
+  "removed_from_favorites_successfully": "Removed from favorites successfully"
 }

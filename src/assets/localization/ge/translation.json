@@ -23,5 +23,7 @@
   "already_have_an_account": "უკვე გაქვთ ანგარიში?",
   "introduction_text": "მოგესალმებით FoodFinder-ში! ჩვენ გეხმარებით თქვენი საყვარელი ადგილების მარტივად მოძებნაში",
   "logout": "გასვლა",
-  "view_your_favorites": "იხილეთ თქვენი ფავორიტები"
+  "view_your_favorites": "იხილეთ თქვენი ფავორიტები",
+  "added_to_favorites_successfully": "რესტორანი ფავორიტებში წარმატებით დაემატა",
+  "removed_from_favorites_successfully": "რესტორანი ფავორიტებიდან წარმატებით წაიშალა"
 }
