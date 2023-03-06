@@ -27,15 +27,12 @@ export const useSignInForm = () => {
   const onSubmit = async (payload: SignInFormValues) => {
     try {
       // FIX: ts issue
-      const {message, token, refreshToken, user}: any = await mutateAsync(
-        payload,
-      );
+      const {token, refreshToken, user}: any = await mutateAsync(payload);
       reset();
       userStorage.setUserToken(token);
       userStorage.setRefreshToken(refreshToken);
-      userStorage.setHasLoggedIn(true);
+      userStorage.setHasLoggedIn();
       authenticateUser(user);
-      // show success toast message
     } catch (error) {
       // show errot toast
     }
