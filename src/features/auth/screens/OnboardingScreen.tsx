@@ -22,7 +22,11 @@ export const OnboardingScreen = () => {
       <Text textAlign="center" fontSize="button" fontWeight="bold">
         {t('introduction_text')}
       </Text>
-      <HStack mt={spaces[1]} justifyContent="space-around" w="80%">
+      <HStack
+        mt={spaces[1]}
+        justifyContent="space-around"
+        w="80%"
+        alignSelf="center">
         <OnboardingCard text={t('sign_in')} navigateTo="SignIn" />
         <OnboardingCard text={t('sign_up')} navigateTo="SignUp" />
       </HStack>

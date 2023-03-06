@@ -16,12 +16,7 @@ export const OnboardingBackground = ({children}: Props) => {
       resizeMode="cover"
       style={styles.container}>
       <View style={styles.overlay} />
-      <View
-        flex={1}
-        w="100%"
-        px={spaces[4]}
-        justifyContent="center"
-        alignItems="center">
+      <View flex={1} w="100%" px={spaces[4]} justifyContent="center">
         {children}
       </View>
     </ImageBackground>
