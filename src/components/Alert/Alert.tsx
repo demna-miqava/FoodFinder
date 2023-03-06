@@ -1,5 +1,6 @@
-import {Alert as NativeAlert, VStack} from 'native-base';
 import React from 'react';
+import {spaces} from '@app/theme';
+import {Alert as NativeAlert, HStack, VStack} from 'native-base';
 import {useWindowDimensions} from 'react-native';
 import {Text} from '../Typography';
 
@@ -12,15 +13,20 @@ interface Props {
 export const Alert = ({title, message, status}: Props) => {
   const {width} = useWindowDimensions();
   return (
-    <NativeAlert variant="left-accent" status={status} w={width}>
-      <VStack w="100%" textAlign="left" space={1.5}>
-        <Text color="bg.primary" fontSize="body" fontWeight="bold">
-          {title}
-        </Text>
-        <Text color="bg.primary" fontSize="button" fontWeight="medium">
-          {message}
-        </Text>
-      </VStack>
+    <NativeAlert variant="solid" status={status} w={width} mb="15px">
+      <HStack w={width} alignItems="center" px={spaces[3]} space={3}>
+        <NativeAlert.Icon size={30} />
+        <VStack>
+          <Text color="bg.primary" fontSize="body" fontWeight="bold">
+            {title}
+          </Text>
+          {message && (
+            <Text color="bg.primary" fontSize="button" fontWeight="medium">
+              {message}
+            </Text>
+          )}
+        </VStack>
+      </HStack>
     </NativeAlert>
   );
 };
