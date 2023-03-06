@@ -25,5 +25,7 @@
   "logout": "Logout",
   "view_your_favorites": "View your favorites",
   "added_to_favorites_successfully": "Added to favorites successfully",
-  "removed_from_favorites_successfully": "Removed from favorites successfully"
+  "removed_from_favorites_successfully": "Removed from favorites successfully",
+  "congratulations": "Congratulations!",
+  "your_account_has_been_created_successfully": "Your account has been created successfully"
 }

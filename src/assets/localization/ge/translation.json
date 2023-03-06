@@ -25,5 +25,7 @@
   "logout": "გასვლა",
   "view_your_favorites": "იხილეთ თქვენი ფავორიტები",
   "added_to_favorites_successfully": "რესტორანი ფავორიტებში წარმატებით დაემატა",
-  "removed_from_favorites_successfully": "რესტორანი ფავორიტებიდან წარმატებით წაიშალა"
+  "removed_from_favorites_successfully": "რესტორანი ფავორიტებიდან წარმატებით წაიშალა",
+  "congratulations": "გილოცავთ!",
+  "your_account_has_been_created_successfully": "თქვენი ანგარიში წარმატებით შეიქმნა"
 }
