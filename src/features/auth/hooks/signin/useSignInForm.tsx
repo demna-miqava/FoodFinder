@@ -3,12 +3,13 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import {useSignInReq} from '@app/api';
 import {SignInFormValues} from '../../types';
 import {userStorage} from '@helpers/';
-import {useUser} from '@hooks/';
+import {useBasicToast, useUser} from '@hooks/';
 import {useSignInValidation} from './useSignInValidation';
 
 export const useSignInForm = () => {
   const {getSignUpSchema} = useSignInValidation();
   const {mutateAsync, isLoading, isError, reset} = useSignInReq();
+  const {showToast} = useBasicToast();
   const {authenticateUser} = useUser();
   const {
     control,
@@ -33,8 +34,13 @@ export const useSignInForm = () => {
       userStorage.setRefreshToken(refreshToken);
       userStorage.setHasLoggedIn();
       authenticateUser(user);
-    } catch (error) {
-      // show errot toast
+    } catch (error: any) {
+      showToast({
+        id: 'sign_in_error',
+        title: error?.message as string,
+        message: '',
+        status: 'error',
+      });
     }
   };
 

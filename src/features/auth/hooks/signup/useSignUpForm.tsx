@@ -5,7 +5,7 @@ import {User} from '@app/types';
 import {useSignUpReq} from '@app/api';
 import {SignUpFormValues} from '../../types';
 import {userStorage} from '@helpers/';
-import {useUser} from '@hooks/';
+import {useBasicToast, useUser} from '@hooks/';
 
 interface SignUpResponse {
   message: string;
@@ -18,6 +18,7 @@ export const useSignUpForm = () => {
   const {getSignUpSchema} = useSignUpValidation();
   const {mutateAsync, isLoading, isError, reset} = useSignUpReq();
   const {authenticateUser} = useUser();
+  const {showToast} = useBasicToast();
   const {
     control,
     handleSubmit,
@@ -37,17 +38,25 @@ export const useSignUpForm = () => {
   const onSubmit = async (payload: SignUpFormValues) => {
     try {
       // FIX: ts issue
-      const {message, token, refreshToken, user}: any = await mutateAsync(
-        payload,
-      );
+      const {token, refreshToken, user}: any = await mutateAsync(payload);
       userStorage.setUserToken(token);
       userStorage.setRefreshToken(refreshToken);
       userStorage.setHasLoggedIn();
       authenticateUser(user);
-      // show success toast message
       reset();
-    } catch (error) {
-      // show errot toast
+      showToast({
+        id: 'account_created',
+        title: 'congratulations',
+        message: 'your_account_has_been_created_successfully',
+        status: 'success',
+      });
+    } catch (error: any) {
+      showToast({
+        id: 'sign_up_error',
+        title: error?.message as string,
+        message: '',
+        status: 'error',
+      });
     }
   };
 
