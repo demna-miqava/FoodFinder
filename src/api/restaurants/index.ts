@@ -1,19 +1,17 @@
 import {useQuery} from 'react-query';
 import {customRestaunrantsInstance} from './restaurants.instance';
-import {mocks} from './mock';
 import {LocationResults, UseQueryOptionsType} from '@type/';
 import {GOOGLE_API_KEY} from '@app/helpers';
 
 export const getRestaurants = (location: string) => {
   return customRestaunrantsInstance({
-    url: ``,
+    url: `/place/nearbysearch/json?location=${location}&radius=10000&key=${GOOGLE_API_KEY}`,
     method: 'get',
     params: {location},
   });
 };
 
 export const getLocation = (searchTerm: string) => {
-  // create custom instance for location if needed
   return customRestaunrantsInstance({
     url: `/geocode/json?address=${searchTerm}&key=${GOOGLE_API_KEY}`,
     method: 'get',
@@ -21,11 +19,19 @@ export const getLocation = (searchTerm: string) => {
   });
 };
 
-export const useGetRestaurants = (location: string) => {
-  return useQuery('restaurants', async () => {
-    const data = mocks[location];
-    return data;
-  });
+export const useGetRestaurants = (
+  location: string,
+  options: UseQueryOptionsType,
+) => {
+  return useQuery(
+    'restaurants',
+    async () => {
+      const data = await getRestaurants(location);
+
+      return data;
+    },
+    options,
+  );
 };
 
 const transformLocation = (data: LocationResults) => {

@@ -45,6 +45,7 @@ export const RestaurantsScreen = () => {
         </VStack>
       )}
       <View>
+        {/* fix ts error here */}
         <MakeRequestWrapper
           data={restaurantsData?.results}
           isFetching={isLoading}

@@ -7,12 +7,16 @@ import {RestaurantCardType, ToastStatus} from '@type/';
 import {useTranslation} from 'react-i18next';
 import {BusinessStatusEnum, ToastIds} from '@constants/';
 import {useBasicToast, useFavorites} from '@app/hooks';
+import {GOOGLE_API_BASE_URL, GOOGLE_API_KEY} from '@app/helpers';
 
 const addedToFavoritesMessage = 'added_to_favorites_successfully';
 const remvedFromFavoritesMessage = 'removed_from_favorites_successfully';
 
 const addedToFavorites = ToastIds.AddedToFavoritesSuccessFully;
 const removedFromFavorites = ToastIds.RemovedFromFavoritesSuccessFully;
+
+const getImageUrl = (reference: string) =>
+  `${GOOGLE_API_BASE_URL}/place/photo?maxwidth=400&photoreference=${reference}&key=${GOOGLE_API_KEY}`;
 
 export const RestaurantsInfoCard = ({
   restaurant,
@@ -30,6 +34,7 @@ export const RestaurantsInfoCard = ({
     business_status,
     address,
     place_id,
+    imageRef,
   } = restaurant;
   const theme = useTheme();
 
@@ -72,7 +77,7 @@ export const RestaurantsInfoCard = ({
     <View style={stylesBuilder(theme).container}>
       <Image
         source={{
-          uri: photos[0],
+          uri: getImageUrl(imageRef),
         }}
         style={stylesBuilder(theme).mainImageStyles}
       />

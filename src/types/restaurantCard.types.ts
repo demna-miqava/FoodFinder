@@ -3,7 +3,7 @@ import {BusinessStatusEnum} from '@constants/';
 export interface RestaurantCardType {
   name: string;
   icon: any;
-  photos: string[];
+  photos: [{photo_reference: string}];
   address?: string;
   rating: number;
   opening_hours: {
@@ -11,4 +11,5 @@ export interface RestaurantCardType {
   };
   business_status: keyof typeof BusinessStatusEnum;
   place_id: string;
+  imageRef: string;
 }
