@@ -5,7 +5,6 @@ import {TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {RestaurantCardType} from '@app/types';
 import {FadeInView} from '@app/components/animations';
-import {mockImages} from '@app/api/restaurants/mock';
 
 type Props = {
   items: (RestaurantCardType & {vicinity: string})[];
@@ -29,7 +28,7 @@ export const RestaurantsList = ({
       renderItem={({item}) => {
         const restaurantData = {
           ...item,
-          imageRef: item.photos[0]?.photo_reference || mockImages[0],
+          imageRef: item?.photos?.[0]?.photo_reference,
           address: item.vicinity,
         };
         return (

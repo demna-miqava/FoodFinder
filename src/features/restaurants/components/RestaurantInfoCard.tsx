@@ -8,6 +8,7 @@ import {useTranslation} from 'react-i18next';
 import {BusinessStatusEnum, ToastIds} from '@constants/';
 import {useBasicToast, useFavorites} from '@app/hooks';
 import {GOOGLE_API_BASE_URL, GOOGLE_API_KEY} from '@app/helpers';
+import {mockImages} from '@app/api/restaurants/mock';
 
 const addedToFavoritesMessage = 'added_to_favorites_successfully';
 const remvedFromFavoritesMessage = 'removed_from_favorites_successfully';
@@ -75,7 +76,7 @@ export const RestaurantsInfoCard = ({
     <View style={stylesBuilder(theme).container}>
       <Image
         source={{
-          uri: getImageUrl(imageRef),
+          uri: imageRef ? getImageUrl(imageRef) : mockImages[0],
         }}
         style={stylesBuilder(theme).mainImageStyles}
       />
