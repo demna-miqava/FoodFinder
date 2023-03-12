@@ -13,6 +13,13 @@
     "clean": "yarn clean-ios; yarn clean-android",
     "pod-install": "cd ios; pod install; cd -"
   },
+  "reactNativePermissionsIOS": [
+    "Camera",
+    "FaceID",
+    "LocationAccuracy",
+    "LocationAlways",
+    "LocationWhenInUse"
+  ],
   "dependencies": {
     "@hookform/resolvers": "^2.9.11",
     "@react-native-async-storage/async-storage": "^1.17.11",
@@ -34,6 +41,8 @@
     "react-native-config": "^1.5.0",
     "react-native-crypto-js": "^1.0.0",
     "react-native-fast-image": "^8.6.3",
+    "react-native-geolocation-service": "^5.3.1",
+    "react-native-permissions": "^3.7.3",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "^3.18.2",
     "react-native-svg": "12.1.1",

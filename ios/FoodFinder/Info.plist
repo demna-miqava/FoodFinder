@@ -6,6 +6,12 @@
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>FoodFinder</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Allow FoodFinder to access location</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Allow FoodFinder to access location</string>
+	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+	<dict/>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

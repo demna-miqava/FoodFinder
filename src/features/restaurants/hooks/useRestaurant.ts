@@ -1,10 +1,15 @@
 import {useEffect, useState} from 'react';
 import {useGetLocation, useGetRestaurants} from '@api/restaurants';
-import {useDebounce} from '@hooks/';
+import {useDebounce, useLocationPermissions, useMount} from '@hooks/';
 
 export const useRestaurant = () => {
   // add pagination
   const [searchCity, setSearchCity] = useState<string>('');
+
+  const {getLocation, currentLocation} = useLocationPermissions();
+
+  useMount(getLocation);
+
   const {debouncedValue: debouncedSearchedCity} = useDebounce({
     value: searchCity,
     delay: 1000,
@@ -23,7 +28,7 @@ export const useRestaurant = () => {
     isFetching: isRestaurantsFetching,
     isError,
     refetch: refetchRestaurants,
-  } = useGetRestaurants(locationData as string, {
+  } = useGetRestaurants((locationData || currentLocation) as string, {
     enabled: false,
   });
 
@@ -35,11 +40,11 @@ export const useRestaurant = () => {
   }, [debouncedSearchedCity]);
 
   useEffect(() => {
-    if (locationData) {
+    if (locationData || currentLocation) {
       refetchRestaurants();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [locationData]);
+  }, [locationData, currentLocation]);
 
   return {
     setSearchCity,
