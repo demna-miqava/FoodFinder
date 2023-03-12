@@ -1,12 +1,18 @@
-import {HStack, Pressable, useTheme, View} from 'native-base';
 import React, {useMemo} from 'react';
+import {HStack, Pressable, useTheme, View} from 'native-base';
 import {HeartIcon, OpenNowIcon, StarIcon} from '@icons/';
 import {Image} from '@components/Image';
 import {Text} from '@components/Typography';
-import {RestaurantCardType} from '@type/';
+import {RestaurantCardType, ToastStatus} from '@type/';
 import {useTranslation} from 'react-i18next';
-import {BusinessStatusEnum} from '@app/constants';
-import {useFavorites} from '@app/hooks';
+import {BusinessStatusEnum, ToastIds} from '@constants/';
+import {useBasicToast, useFavorites} from '@app/hooks';
+
+const addedToFavoritesMessage = 'added_to_favorites_successfully';
+const remvedFromFavoritesMessage = 'removed_from_favorites_successfully';
+
+const addedToFavorites = ToastIds.AddedToFavoritesSuccessFully;
+const removedFromFavorites = ToastIds.RemovedFromFavoritesSuccessFully;
 
 export const RestaurantsInfoCard = ({
   restaurant,
@@ -30,17 +36,29 @@ export const RestaurantsInfoCard = ({
   const {t} = useTranslation();
 
   const {favorites, toggleFavorites} = useFavorites();
+  const {showToast} = useBasicToast();
 
   const ratingArray = Array.from({length: Math.ceil(rating)}, () =>
     Math.random(),
   );
 
-  const iconColors = useMemo(
+  const favoriteConfig = useMemo(
     () => {
       const isFavorite = favorites.find(
         (item: RestaurantCardType) => item.place_id === place_id,
       );
       return {
+        toastInfo: {
+          id: `${place_id}-${
+            isFavorite ? removedFromFavorites : addedToFavorites
+          }`,
+          title: isFavorite
+            ? remvedFromFavoritesMessage
+            : addedToFavoritesMessage,
+          message: '',
+          status: 'success' as ToastStatus,
+          duration: 1500,
+        },
         fill: isFavorite ? 'red' : 'gray',
         bgFill: isFavorite ? 'red' : 'white',
       };
@@ -64,12 +82,13 @@ export const RestaurantsInfoCard = ({
           <Pressable
             onPress={() => {
               toggleFavorites(restaurant);
+              showToast(favoriteConfig.toastInfo);
             }}>
             <HeartIcon
               width={20}
               height={20}
-              fill={iconColors.fill}
-              bgFill={iconColors.bgFill}
+              fill={favoriteConfig.fill}
+              bgFill={favoriteConfig.bgFill}
             />
           </Pressable>
         </HStack>
