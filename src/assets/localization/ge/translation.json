@@ -27,5 +27,8 @@
   "added_to_favorites_successfully": "რესტორანი ფავორიტებში წარმატებით დაემატა",
   "removed_from_favorites_successfully": "რესტორანი ფავორიტებიდან წარმატებით წაიშალა",
   "congratulations": "გილოცავთ!",
-  "your_account_has_been_created_successfully": "თქვენი ანგარიში წარმატებით შეიქმნა"
+  "your_account_has_been_created_successfully": "თქვენი ანგარიში წარმატებით შეიქმნა",
+  "user_not_found": "ეს მომხმარებელი არ არსებობს",
+  "user_already_exists": "მომხმარებელი უკვე არსებობს",
+  "credentials_are_invalid": "შეყვანილი ინფორმაცია არავალიდურია"
 }

@@ -27,5 +27,8 @@
   "added_to_favorites_successfully": "Added to favorites successfully",
   "removed_from_favorites_successfully": "Removed from favorites successfully",
   "congratulations": "Congratulations!",
-  "your_account_has_been_created_successfully": "Your account has been created successfully"
+  "your_account_has_been_created_successfully": "Your account has been created successfully",
+  "user_not_found": "This account does not exist",
+  "user_already_exists": "This account already exists",
+  "credentials_are_invalid": "Credentials are invalid"
 }
