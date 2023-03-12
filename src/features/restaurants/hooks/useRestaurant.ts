@@ -36,7 +36,7 @@ export const useRestaurant = () => {
 
   useEffect(() => {
     if (locationData) {
-      refetchRestaurants();
+      // refetchRestaurants();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locationData]);

@@ -5,6 +5,7 @@ export * from './user.storage';
 
 export const API_BASE_URL = Config.API_BASE_URL;
 export const GOOGLE_API_BASE_URL = Config.GOOGLE_API_BASE_URL;
+export const GOOGLE_API_KEY = Config.GOOGLE_API_KEY;
 
 export const isPlatform = (platform: string) => {
   return Platform.OS === platform;

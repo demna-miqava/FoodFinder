@@ -1,11 +1,12 @@
 import {useQuery} from 'react-query';
 import {customRestaunrantsInstance} from './restaurants.instance';
-import {mocks, locations} from './mock';
+import {mocks} from './mock';
 import {LocationResults, UseQueryOptionsType} from '@type/';
+import {GOOGLE_API_KEY} from '@app/helpers';
 
 export const getRestaurants = (location: string) => {
   return customRestaunrantsInstance({
-    url: 'some api address',
+    url: ``,
     method: 'get',
     params: {location},
   });
@@ -14,7 +15,7 @@ export const getRestaurants = (location: string) => {
 export const getLocation = (searchTerm: string) => {
   // create custom instance for location if needed
   return customRestaunrantsInstance({
-    url: 'some url',
+    url: `/geocode/json?address=${searchTerm}&key=${GOOGLE_API_KEY}`,
     method: 'get',
     params: {searchTerm},
   });
@@ -22,9 +23,6 @@ export const getLocation = (searchTerm: string) => {
 
 export const useGetRestaurants = (location: string) => {
   return useQuery('restaurants', async () => {
-    // replace with this in the future
-    // const data = await getRestaurants(location);
-    // @ts-ignore
     const data = mocks[location];
     return data;
   });
@@ -45,10 +43,8 @@ export const useGetLocation = (
     'location',
     async () => {
       // replace with this in the future
-      // const data = await getLocation(searchTerm);
-      // @ts-ignore
-      const locationData = locations[searchTerm];
-      const result = transformLocation(locationData);
+      const data = await getLocation(searchTerm);
+      const result = transformLocation(data as LocationResults);
       return result;
     },
     options,
