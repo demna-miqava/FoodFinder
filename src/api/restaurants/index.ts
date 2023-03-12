@@ -54,3 +54,24 @@ export const useGetLocation = (
     options,
   );
 };
+
+export const getSingleRestaurant = (placeId: string) => {
+  return customRestaunrantsInstance({
+    url: `/place/details/json?place_id=${placeId}&key=${GOOGLE_API_KEY}`,
+    method: 'get',
+  });
+};
+
+export const useGetSingleRestaurant = (
+  placeId: string,
+  options: UseQueryOptionsType,
+) => {
+  return useQuery(
+    'location',
+    async () => {
+      const data = await getSingleRestaurant(placeId);
+      return data;
+    },
+    options,
+  );
+};
