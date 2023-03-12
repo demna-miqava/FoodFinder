@@ -13,3 +13,7 @@ export interface RestaurantCardType {
   place_id: string;
   imageRef: string;
 }
+
+export interface RestaurantResult {
+  results: RestaurantCardType[];
+}

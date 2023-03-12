@@ -4,7 +4,7 @@ interface Props {
   isFetching: boolean;
   isError: boolean;
   isEmpty: boolean;
-  data: unknown[];
+  data: any;
   renderLoader: () => React.ReactElement;
   renderData: (items: any[]) => React.ReactElement;
 }

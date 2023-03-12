@@ -28,7 +28,6 @@ export const RestaurantsInfoCard = ({
   const {
     name,
     icon,
-    photos,
     opening_hours,
     rating,
     business_status,
@@ -71,7 +70,6 @@ export const RestaurantsInfoCard = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [favorites],
   );
-  //https://github.com/Monte9/react-native-ratings
 
   return (
     <View style={stylesBuilder(theme).container}>

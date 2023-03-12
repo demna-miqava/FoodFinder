@@ -45,11 +45,10 @@ export const RestaurantsScreen = () => {
         </VStack>
       )}
       <View>
-        {/* fix ts error here */}
         <MakeRequestWrapper
           data={restaurantsData?.results}
           isFetching={isLoading}
-          isEmpty={restaurantsData?.length === 0}
+          isEmpty={restaurantsData?.results?.length === 0}
           renderLoader={() => {
             return (
               <FlatList
