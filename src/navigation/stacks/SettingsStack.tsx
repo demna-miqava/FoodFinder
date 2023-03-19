@@ -1,6 +1,7 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {FavoritesScreen, SettingsScreen} from '@features/settings/screens';
+import {SettingsScreen} from '@features/settings/screens';
+import {FavoritesScreen} from '@features/favorites/screens';
 
 const SettingsStack = createNativeStackNavigator();
 

@@ -1,13 +1,13 @@
 import React, {useMemo} from 'react';
 import {HStack, Pressable, useTheme, View} from 'native-base';
+import {useTranslation} from 'react-i18next';
 import {HeartIcon, OpenNowIcon, StarIcon} from '@icons/';
 import {Image} from '@components/Image';
 import {Text} from '@components/Typography';
 import {RestaurantCardType, ToastStatus} from '@type/';
-import {useTranslation} from 'react-i18next';
 import {BusinessStatusEnum, ToastIds} from '@constants/';
-import {useBasicToast, useFavorites} from '@app/hooks';
-import {getImageUrl} from '@app/helpers';
+import {useBasicToast, useFavorites} from '@hooks/';
+import {getImageUrl} from '@helpers/';
 
 const addedToFavoritesMessage = 'added_to_favorites_successfully';
 const remvedFromFavoritesMessage = 'removed_from_favorites_successfully';
@@ -118,7 +118,7 @@ export const RestaurantsInfoCard = ({
   );
 };
 
-const stylesBuilder = theme => ({
+const stylesBuilder = (theme: any) => ({
   container: {
     borderRadius: theme.space[2],
     backgroundColor: theme.colors.bg.primary,
@@ -131,6 +131,7 @@ const stylesBuilder = theme => ({
   mainImageStyles: {
     width: '100%',
     height: 150,
+    borderRadius: 5,
   },
   iconStyles: {
     width: 15,

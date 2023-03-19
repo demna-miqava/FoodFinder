@@ -4,15 +4,11 @@ import {CardSkeleton} from '@components/Skeleton';
 import {MakeRequestWrapper} from '@app/containers';
 import {RestaurantCardType} from '@app/types';
 import {spaces} from '@app/theme';
-import {
-  RestaurantSearch,
-  RestaurantsInfoCard,
-  RestaurantsList,
-} from '../components/';
+import {RestaurantSearch, RestaurantsList} from '../components/';
 import {useFavorites} from '@hooks/';
-import {useTranslation} from 'react-i18next';
 import {useRestaurant} from '../hooks';
-import {MiniFavoritesBar} from '../components/MiniFavoritesBar';
+import {MiniFavoritesBar} from '@features/favorites/components';
+import {RestaurantsInfoCard} from '@components/restaurant';
 
 // move this to separate file
 const dummyLoadingData = [{id: '1'}, {id: '2'}, {id: '3'}];

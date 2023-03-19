@@ -57,7 +57,9 @@ export const useRestaurant = () => {
 
   return {
     setSearchCity,
-    restaurantsData: restaurantsData?.pages?.map(page => page?.results).flat(),
+    restaurantsData: restaurantsData?.pages
+      ?.map((page: any) => page?.results)
+      .flat(),
     isLoading:
       (isRestaurantsFetching && !isFetchingNextPage) || isLocationFetching,
     isFetchingNextPage,

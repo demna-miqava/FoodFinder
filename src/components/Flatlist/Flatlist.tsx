@@ -9,7 +9,7 @@ interface Props {
   showsHorizontalScrollIndicator?: boolean;
   horizontal?: boolean;
   onEndReached?: () => void;
-  onEndReachedThreshold: number;
+  onEndReachedThreshold?: number;
   footerComponent?: React.ReactElement;
   mb?: number;
 }

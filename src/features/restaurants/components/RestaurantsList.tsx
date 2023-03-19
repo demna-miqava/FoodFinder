@@ -1,12 +1,11 @@
 import React from 'react';
-import {spaces} from '@app/theme';
-import {FlatList, Spinner} from 'native-base';
-import {TouchableOpacity} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {RestaurantCardType} from '@app/types';
-import {FadeInView} from '@app/components/animations';
-import {Text} from '@components/Typography';
 import {useTranslation} from 'react-i18next';
+import {Spinner} from 'native-base';
+import {Text} from '@components/Typography';
+import {Flatlist} from '@components/Flatlist';
+import {RestaurantCardWrapper} from '@components/restaurant';
+import {spaces} from '@app/theme';
+import {RestaurantCardType} from '@type/';
 
 type Props = {
   items: RestaurantCardType[];
@@ -21,10 +20,7 @@ const renderSpinner = () => {
   return <Spinner size="lg" />;
 };
 
-const RenderFooter = (
-  isFetchingNextPage?: boolean,
-  hasNextPage?: boolean,
-): any => {
+const RenderFooter = (isFetchingNextPage?: boolean, hasNextPage?: boolean) => {
   const {t} = useTranslation();
 
   if (isFetchingNextPage) {
@@ -32,7 +28,7 @@ const RenderFooter = (
   } else if (!hasNextPage && hasNextPage !== undefined) {
     return <Text textAlign="center">{t('no_more_restaurants')}</Text>;
   }
-  return null;
+  return <></>;
 };
 
 export const RestaurantsList = ({
@@ -43,14 +39,10 @@ export const RestaurantsList = ({
   isFetchingNextPage,
   hasNextPage,
 }: Props) => {
-  const navigation = useNavigation<any>();
   return (
-    <FlatList
+    <Flatlist
       data={items}
-      showsVerticalScrollIndicator={false}
-      showsHorizontalScrollIndicator={false}
       horizontal={horizontal}
-      mb={spaces[4] + 4}
       renderItem={({item}) => {
         const restaurantData = {
           ...item,
@@ -58,22 +50,19 @@ export const RestaurantsList = ({
           address: item.vicinity,
         };
         return (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.push('RestaurantDetails', {
-                restaurant: restaurantData,
-              })
-            }>
-            <FadeInView>{component && component(restaurantData)}</FadeInView>
-          </TouchableOpacity>
+          <RestaurantCardWrapper
+            restaurantData={restaurantData}
+            component={component}
+          />
         );
       }}
       keyExtractor={item => item.place_id}
       onEndReached={() => {
         refetchRestaurants && refetchRestaurants();
       }}
+      mb={spaces[5]}
       onEndReachedThreshold={0.5}
-      ListFooterComponent={RenderFooter(isFetchingNextPage, hasNextPage)}
+      footerComponent={RenderFooter(isFetchingNextPage, hasNextPage)}
     />
   );
 };
