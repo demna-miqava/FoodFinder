@@ -29,7 +29,7 @@ const RenderFooter = (
 
   if (isFetchingNextPage) {
     return renderSpinner();
-  } else if (!hasNextPage) {
+  } else if (!hasNextPage && hasNextPage !== undefined) {
     return <Text textAlign="center">{t('no_more_restaurants')}</Text>;
   }
   return null;

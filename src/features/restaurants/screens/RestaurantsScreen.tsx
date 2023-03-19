@@ -1,11 +1,10 @@
-import {FlatList, Text, View, VStack} from 'native-base';
+import {FlatList, View} from 'native-base';
 import React, {useState} from 'react';
 import {CardSkeleton} from '@components/Skeleton';
 import {MakeRequestWrapper} from '@app/containers';
 import {RestaurantCardType} from '@app/types';
 import {spaces} from '@app/theme';
 import {
-  MiniRestaurantCard,
   RestaurantSearch,
   RestaurantsInfoCard,
   RestaurantsList,
@@ -13,6 +12,7 @@ import {
 import {useFavorites} from '@hooks/';
 import {useTranslation} from 'react-i18next';
 import {useRestaurant} from '../hooks';
+import {MiniFavoritesBar} from '../components/MiniFavoritesBar';
 
 // move this to separate file
 const dummyLoadingData = [{id: '1'}, {id: '2'}, {id: '3'}];
@@ -29,8 +29,7 @@ export const RestaurantsScreen = () => {
     hasNextPage,
   } = useRestaurant();
   const {favorites} = useFavorites();
-  const {t} = useTranslation();
-  console.log(restaurantsData);
+
   return (
     <View flex={1} padding={spaces[3]}>
       <RestaurantSearch
@@ -38,20 +37,7 @@ export const RestaurantsScreen = () => {
         setIsFavoritesOpen={setIsFavoritesOpen}
         isFavoritesOpen={isFavoritesOpen}
       />
-      {isFavoritesOpen && (
-        <VStack space={2}>
-          <Text mx={spaces[3]} fontSize="body">
-            {t('favorites')}
-          </Text>
-          <RestaurantsList
-            items={favorites}
-            horizontal={true}
-            component={(data: RestaurantCardType) => {
-              return <MiniRestaurantCard restaurant={data} />;
-            }}
-          />
-        </VStack>
-      )}
+      {isFavoritesOpen && <MiniFavoritesBar favorites={favorites} />}
       <View>
         <MakeRequestWrapper
           data={restaurantsData}
