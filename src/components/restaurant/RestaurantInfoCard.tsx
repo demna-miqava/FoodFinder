@@ -8,6 +8,7 @@ import {RestaurantCardType, ToastStatus} from '@type/';
 import {BusinessStatusEnum, ToastIds} from '@constants/';
 import {useBasicToast, useFavorites} from '@hooks/';
 import {getImageUrl} from '@helpers/';
+import {ThemeType} from '@app/theme';
 
 const addedToFavoritesMessage = 'added_to_favorites_successfully';
 const remvedFromFavoritesMessage = 'removed_from_favorites_successfully';
@@ -118,7 +119,7 @@ export const RestaurantsInfoCard = ({
   );
 };
 
-const stylesBuilder = (theme: any) => ({
+const stylesBuilder = (theme: ThemeType) => ({
   container: {
     borderRadius: theme.space[2],
     backgroundColor: theme.colors.bg.primary,

@@ -1,3 +1,4 @@
+import {ThemeType} from '@app/theme';
 import {Skeleton, useTheme, VStack} from 'native-base';
 import React from 'react';
 
@@ -11,8 +12,8 @@ export const CardSkeleton = () => {
     </VStack>
   );
 };
-// move this to separate file
-const stylesBuilder = theme => ({
+
+const stylesBuilder = (theme: ThemeType) => ({
   container: {
     borderRadius: theme.space[2],
     backgroundColor: theme.colors.bg.primary,
