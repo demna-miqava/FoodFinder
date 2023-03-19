@@ -34,5 +34,9 @@
   "no_more_restaurants": "სამწუხაროდ მეტი ადგილი ვეღარ მოიძებნა",
   "maps": "რუკა",
   "restaurants": "რესტორნები",
-  "settings": "პარამეტრები"
+  "settings": "პარამეტრები",
+  "language": "ენა",
+  "pick_a_language": "აირჩიე ენა",
+  "georgian": "ქართული",
+  "english": "ინგლისური"
 }

@@ -34,5 +34,9 @@
   "no_more_restaurants": "No more restaurants found",
   "maps": "Maps",
   "restaurants": "Restaurants",
-  "settings": "Settings"
+  "settings": "Settings",
+  "language": "Language",
+  "pick_a_language": "Pick a language",
+  "georgian": "Georgian",
+  "english": "English"
 }
