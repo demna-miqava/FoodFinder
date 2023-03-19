@@ -6,3 +6,6 @@ export {MapsIcon} from './MapsIcon';
 export {SettingsIcon} from './SettingsIcon';
 export {HeartIcon} from './HeartIcon';
 export {LogoutIcon} from './LogoutIcon';
+export {LanguageIcon} from './LanguageIcon';
+export {GeorgianFlag} from './GeorgianFlag';
+export {USAFlag} from './USAFlag';
