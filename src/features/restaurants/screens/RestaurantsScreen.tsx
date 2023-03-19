@@ -31,15 +31,6 @@ export const RestaurantsScreen = () => {
   const {favorites} = useFavorites();
   const {t} = useTranslation();
 
-  console.log(
-    'sazamtro isFetching next page',
-    isFetchingNextPage,
-    'isLoading',
-    isLoading,
-    'restaurantsData',
-    restaurantsData?.pages.map(page => page.results).flat(),
-  );
-
   return (
     <View flex={1} padding={spaces[3]}>
       <RestaurantSearch

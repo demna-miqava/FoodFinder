@@ -13,7 +13,7 @@ export const useRestaurant = () => {
     value: searchCity,
     delay: 1000,
   });
-  // https://github.dev/amandeepmittal/react-native-examples/blob/main/infinite-scroll-with-react-query/src/screens/HomeScreen.js
+
   const {
     data: locationData,
     refetch: refetchLocation,
@@ -40,8 +40,6 @@ export const useRestaurant = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasNextPage]);
-
-  console.log('here 123 HAS NEXT PAGE', hasNextPage);
 
   useEffect(() => {
     if (debouncedSearchedCity) {
