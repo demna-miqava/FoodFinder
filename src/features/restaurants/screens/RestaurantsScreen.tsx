@@ -30,7 +30,7 @@ export const RestaurantsScreen = () => {
   } = useRestaurant();
   const {favorites} = useFavorites();
   const {t} = useTranslation();
-
+  console.log(restaurantsData);
   return (
     <View flex={1} padding={spaces[3]}>
       <RestaurantSearch
@@ -54,9 +54,9 @@ export const RestaurantsScreen = () => {
       )}
       <View>
         <MakeRequestWrapper
-          data={restaurantsData?.pages.map(page => page?.results).flat()}
+          data={restaurantsData}
           isFetching={isLoading}
-          isEmpty={restaurantsData?.results?.length === 0}
+          isEmpty={restaurantsData?.length === 0}
           renderLoader={() => {
             return (
               <FlatList
