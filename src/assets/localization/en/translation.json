@@ -31,5 +31,8 @@
   "user_not_found": "This account does not exist",
   "user_already_exists": "This account already exists",
   "credentials_are_invalid": "Credentials are invalid",
-  "no_more_restaurants": "No more restaurants found"
+  "no_more_restaurants": "No more restaurants found",
+  "maps": "Maps",
+  "restaurants": "Restaurants",
+  "settings": "Settings"
 }

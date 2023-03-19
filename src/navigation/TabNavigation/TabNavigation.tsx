@@ -6,11 +6,16 @@ import {Platform} from '@constants/';
 import {RestaurantsStack, SettingsStackNavigator} from '../stacks';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {MapScreen} from '@features/map/screens';
+import {useTranslation} from 'react-i18next';
 
 const Tab = createBottomTabNavigator();
 
 export const TabNavigation = () => {
   const theme = useTheme();
+  const {t} = useTranslation();
+  const restaurants = t('restaurants');
+  const maps = t('maps');
+  const settings = t('settings');
 
   const isAndroid = useMemo(() => isPlatform(Platform.Android), []);
   return (
@@ -19,11 +24,11 @@ export const TabNavigation = () => {
         tabBarIcon: ({color, size}) => {
           let iconName = '';
 
-          if (route.name === 'Restaurants') {
+          if (route.name === restaurants) {
             iconName = 'md-restaurant';
-          } else if (route.name === 'Settings') {
+          } else if (route.name === settings) {
             iconName = 'md-settings';
-          } else if (route.name === 'Maps') {
+          } else if (route.name === maps) {
             iconName = 'md-map';
           }
           return <Icon name={iconName} color={color} size={size} />;
@@ -36,17 +41,17 @@ export const TabNavigation = () => {
         },
       })}>
       <Tab.Screen
-        name="Restaurants"
+        name={restaurants}
         component={RestaurantsStack}
         options={{headerShown: false}}
       />
       <Tab.Screen
-        name="Maps"
+        name={maps}
         component={MapScreen}
         options={{headerShown: false}}
       />
       <Tab.Screen
-        name="Settings"
+        name={settings}
         component={SettingsStackNavigator}
         options={{headerShown: false}}
       />
