@@ -7,7 +7,6 @@ import {RestaurantCardType, ToastStatus} from '@type/';
 import {useTranslation} from 'react-i18next';
 import {BusinessStatusEnum, ToastIds} from '@constants/';
 import {useBasicToast, useFavorites} from '@app/hooks';
-import {mockImages} from '@app/api/restaurants/mock';
 import {getImageUrl} from '@app/helpers';
 
 const addedToFavoritesMessage = 'added_to_favorites_successfully';

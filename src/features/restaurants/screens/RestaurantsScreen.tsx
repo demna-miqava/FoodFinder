@@ -53,7 +53,7 @@ export const RestaurantsScreen = () => {
             );
           }}
           isError={isError}
-          renderData={(items: (RestaurantCardType & {vicinity: string})[]) => {
+          renderData={(items: RestaurantCardType[]) => {
             return (
               <RestaurantsList
                 refetchRestaurants={loadMore}

@@ -9,7 +9,7 @@ import {Text} from '@components/Typography';
 import {useTranslation} from 'react-i18next';
 
 type Props = {
-  items: (RestaurantCardType & {vicinity: string})[];
+  items: RestaurantCardType[];
   component: any;
   horizontal?: boolean;
   refetchRestaurants?: any;

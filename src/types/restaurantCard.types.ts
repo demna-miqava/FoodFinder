@@ -12,6 +12,7 @@ export interface RestaurantCardType {
   business_status: keyof typeof BusinessStatusEnum;
   place_id: string;
   imageRef: string;
+  vicinity: string;
 }
 
 export interface RestaurantResult {
