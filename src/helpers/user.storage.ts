@@ -9,6 +9,7 @@ enum UserStorageKeys {
   FAVORITES = 'favorites',
   HAS_LOGGED_IN = 'has logged in',
   USER_INFO = 'user_info',
+  LANGUAGE = 'language',
 }
 
 type stringOrUndefined = string | undefined;
@@ -21,6 +22,7 @@ class UserStorage {
   private _userInfo: User | null = null;
   private _favorites: string[] = [];
   private _hasLoggedIn: boolean = false;
+  private _language: string = 'en';
 
   constructor() {
     this._storage = storage;
@@ -39,6 +41,8 @@ class UserStorage {
     this._hasLoggedIn =
       (await this._storage.getBoolean(UserStorageKeys.HAS_LOGGED_IN)) || false;
     this.processNumberOfVisits();
+    this._language =
+      (await this._storage.getString(UserStorageKeys.LANGUAGE)) || '';
   }
 
   clearAll(): void {
@@ -101,6 +105,16 @@ class UserStorage {
 
   getHasLoggedIn(): boolean {
     return this._hasLoggedIn;
+  }
+
+  getLanguage(): string {
+    return this._language;
+  }
+
+  setLanguage(language: string): void {
+    this._language = language;
+    console.log('lang', language);
+    this._storage.set(UserStorageKeys.LANGUAGE, language);
   }
 
   logout(): void {
