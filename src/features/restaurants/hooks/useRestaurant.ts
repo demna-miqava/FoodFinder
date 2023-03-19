@@ -1,9 +1,8 @@
-import {useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {useGetLocation, useGetRestaurants} from '@api/restaurants';
 import {useDebounce, useLocationPermissions, useMount} from '@hooks/';
 
 export const useRestaurant = () => {
-  // add pagination
   const [searchCity, setSearchCity] = useState<string>('');
 
   const {getLocation, currentLocation} = useLocationPermissions();
@@ -14,7 +13,7 @@ export const useRestaurant = () => {
     value: searchCity,
     delay: 1000,
   });
-
+  // https://github.dev/amandeepmittal/react-native-examples/blob/main/infinite-scroll-with-react-query/src/screens/HomeScreen.js
   const {
     data: locationData,
     refetch: refetchLocation,
@@ -28,9 +27,21 @@ export const useRestaurant = () => {
     isFetching: isRestaurantsFetching,
     isError,
     refetch: refetchRestaurants,
+    hasNextPage,
+    fetchNextPage,
+    isFetchingNextPage,
   } = useGetRestaurants((locationData || currentLocation) as string, {
     enabled: false,
   });
+
+  const loadMore = useCallback(() => {
+    if (hasNextPage) {
+      fetchNextPage();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasNextPage]);
+
+  console.log('here 123 HAS NEXT PAGE', hasNextPage);
 
   useEffect(() => {
     if (debouncedSearchedCity) {
@@ -49,7 +60,12 @@ export const useRestaurant = () => {
   return {
     setSearchCity,
     restaurantsData,
-    isLoading: isRestaurantsFetching || isLocationFetching,
+    isLoading:
+      (isRestaurantsFetching && !isFetchingNextPage) || isLocationFetching,
+    isFetchingNextPage,
     isError,
+    refetchRestaurants,
+    hasNextPage,
+    loadMore,
   };
 };

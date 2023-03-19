@@ -19,9 +19,26 @@ const dummyLoadingData = [{id: '1'}, {id: '2'}, {id: '3'}];
 
 export const RestaurantsScreen = () => {
   const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
-  const {setSearchCity, restaurantsData, isLoading, isError} = useRestaurant();
+  const {
+    setSearchCity,
+    restaurantsData,
+    isLoading,
+    isError,
+    loadMore,
+    isFetchingNextPage,
+    hasNextPage,
+  } = useRestaurant();
   const {favorites} = useFavorites();
   const {t} = useTranslation();
+
+  console.log(
+    'sazamtro isFetching next page',
+    isFetchingNextPage,
+    'isLoading',
+    isLoading,
+    'restaurantsData',
+    restaurantsData?.pages.map(page => page.results).flat(),
+  );
 
   return (
     <View flex={1} padding={spaces[3]}>
@@ -46,7 +63,7 @@ export const RestaurantsScreen = () => {
       )}
       <View>
         <MakeRequestWrapper
-          data={restaurantsData?.results}
+          data={restaurantsData?.pages.map(page => page?.results).flat()}
           isFetching={isLoading}
           isEmpty={restaurantsData?.results?.length === 0}
           renderLoader={() => {
@@ -62,7 +79,10 @@ export const RestaurantsScreen = () => {
           renderData={(items: (RestaurantCardType & {vicinity: string})[]) => {
             return (
               <RestaurantsList
+                refetchRestaurants={loadMore}
                 items={items}
+                isFetchingNextPage={isFetchingNextPage}
+                hasNextPage={hasNextPage}
                 component={(data: RestaurantCardType) => (
                   <RestaurantsInfoCard restaurant={data} />
                 )}

@@ -1,6 +1,6 @@
 import React from 'react';
 import {spaces} from '@app/theme';
-import {FlatList} from 'native-base';
+import {FlatList, Spinner, Text} from 'native-base';
 import {TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {RestaurantCardType} from '@app/types';
@@ -10,12 +10,34 @@ type Props = {
   items: (RestaurantCardType & {vicinity: string})[];
   component: any;
   horizontal?: boolean;
+  refetchRestaurants?: any;
+  isFetchingNextPage?: boolean;
+  hasNextPage?: boolean;
+};
+
+const renderSpinner = () => {
+  return <Spinner size="md" />;
+};
+
+const renderFooter = (
+  isFetchingNextPage?: boolean,
+  hasNextPage?: boolean,
+): any => {
+  if (isFetchingNextPage) {
+    return renderSpinner();
+  } else if (!hasNextPage) {
+    return <Text>oops no more restaurants</Text>;
+  }
+  return null;
 };
 
 export const RestaurantsList = ({
   items,
   component,
   horizontal = false,
+  refetchRestaurants,
+  isFetchingNextPage,
+  hasNextPage,
 }: Props) => {
   const navigation = useNavigation<any>();
   return (
@@ -43,6 +65,11 @@ export const RestaurantsList = ({
         );
       }}
       keyExtractor={item => item.place_id}
+      onEndReached={() => {
+        refetchRestaurants && refetchRestaurants();
+      }}
+      onEndReachedThreshold={0.5}
+      ListFooterComponent={renderFooter(isFetchingNextPage, hasNextPage)}
     />
   );
 };

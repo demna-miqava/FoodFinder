@@ -1,11 +1,13 @@
-import {useQuery, UseQueryResult} from 'react-query';
+import {useInfiniteQuery, useQuery} from 'react-query';
 import {customRestaunrantsInstance} from './restaurants.instance';
-import {LocationResults, RestaurantResult, UseQueryOptionsType} from '@type/';
+import {LocationResults, UseQueryOptionsType} from '@type/';
 import {GOOGLE_API_KEY} from '@app/helpers';
 
-export const getRestaurants = (location: string) => {
+export const getRestaurants = (location: string, nextPageToken: string) => {
   return customRestaunrantsInstance({
-    url: `/place/nearbysearch/json?location=${location}&radius=10000&key=${GOOGLE_API_KEY}`,
+    url: `/place/nearbysearch/json?location=${location}&radius=10000&key=${GOOGLE_API_KEY}${
+      nextPageToken ? `&pagetoken=${nextPageToken}` : ''
+    }`,
     method: 'get',
     params: {location},
   });
@@ -22,14 +24,22 @@ export const getLocation = (searchTerm: string) => {
 export const useGetRestaurants = (
   location: string,
   options: UseQueryOptionsType,
-): UseQueryResult<RestaurantResult> => {
-  return useQuery(
+) => {
+  return useInfiniteQuery(
     'restaurants',
-    async () => {
-      const data = await getRestaurants(location);
-      return data as RestaurantResult;
+    async ({pageParam}) => {
+      const data = await getRestaurants(location, pageParam);
+      return data;
     },
-    options,
+    {
+      ...options,
+      getNextPageParam: (lastPage: any) => {
+        if (lastPage.next_page_token !== null) {
+          return lastPage.next_page_token;
+        }
+        return lastPage;
+      },
+    },
   );
 };
 
