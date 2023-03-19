@@ -30,5 +30,6 @@
   "your_account_has_been_created_successfully": "Your account has been created successfully",
   "user_not_found": "This account does not exist",
   "user_already_exists": "This account already exists",
-  "credentials_are_invalid": "Credentials are invalid"
+  "credentials_are_invalid": "Credentials are invalid",
+  "no_more_restaurants": "No more restaurants found"
 }

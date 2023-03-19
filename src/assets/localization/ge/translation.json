@@ -30,5 +30,6 @@
   "your_account_has_been_created_successfully": "თქვენი ანგარიში წარმატებით შეიქმნა",
   "user_not_found": "ეს მომხმარებელი არ არსებობს",
   "user_already_exists": "მომხმარებელი უკვე არსებობს",
-  "credentials_are_invalid": "შეყვანილი ინფორმაცია არავალიდურია"
+  "credentials_are_invalid": "შეყვანილი ინფორმაცია არავალიდურია",
+  "no_more_restaurants": "სამწუხაროდ მეტი ადგილი ვეღარ მოიძებნა"
 }
